@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import downArrow from '../img/arrow-down-sign-to-navigate.png';
@@ -7,25 +7,39 @@ import centerArray from '../img/center-align.png';
 import rightArray from '../img/align-text-right.png';
 import justifyArray from '../img/justify.png';
 import BorderPop from './BorderPop.js';
+import PaddingPop from './PaddingPop.js';
+import MarginPop from './MarginPop.js';
+import ComponentList from './ComponentList';
 
-const handlePop = (e) => {
+/*const handlePop = (e) => {
   const className = e.target.className;
   switch(className){
     case 'border_pop':
       ReactDOM.render(<BorderPop />, document.getElementById('border_section'));
       break;
     case 'padding_pop':
+      ReactDOM.render(<PaddingPop />, document.getElementById('padding_section'));
       break;
     case 'margin_pop':
+      ReactDOM.render(<MarginPop />, document.getElementById('margin_section'));
       break;
     default:
       break;
   }
 
-};
+};*/
 
-const Prop_text = (e) => {
-    const title = (e.info).split('-');
+
+const Prop_text = (e) => {    
+   const title = (e.info).split('-');
+
+   const [showPop, setShowPop] = useState({
+     borderPop: false,
+     paddingPop: false,
+     marginPop: false
+   });
+
+
     return(
         <>  
             <div className="property_section">
@@ -34,15 +48,15 @@ const Prop_text = (e) => {
             <div className="boxTitle">Box</div>
             <div className="prop_width_tx">width</div> <input className="prop_width"/><div className="prop_width_px">px</div>
             <div className="prop_height_tx">height</div> <input className="prop_height"/><div className="prop_height_px">px</div>
-            <div className="borderTitle">border</div> <img className="border_pop" src = {downArrow} alt={"down"} onClick={handlePop}/>
-            <div id="border_section"></div>
-            <div className="paddingTitle">padding</div> <img className="padding_pop" src = {downArrow} alt={"down"} onClick={handlePop}/>
-            <div className="padding_section"></div>
-            <div className="marginTitle">margin</div> <img className="margin_pop" src = {downArrow} alt={"down"} onClick={handlePop}/>
-            <div className="margin_section"></div>
+            <div className="borderTitle">border</div> <img className="border_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({showPop.borderPop:true}))}/>
+            <div id="border_section">{showPop.borderPop ? <BorderPop/> : null}</div>
+            <div className="paddingTitle">padding</div> <img className="padding_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop(true)}/>
+            <div id="padding_section">{showPop.paddingPop ? <PaddingPop/> : null}</div>
+            <div className="marginTitle">margin</div> <img className="margin_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop(true)}/>
+            <div id="margin_section">{showPop.marginPop ? <MarginPop/> : null}</div>
             <div className="backgroundTitle">background-color</div> 
             <div className="background_section"></div>
-            <div className="arrayTitle">정렬</div> 
+            <div className="arrayTitle">array</div> 
             <img id="img_left_array" src = {leftArray} alt={"leftArray"} />
             <img id="img_center_array" src = {centerArray} alt={"centerArray"} />
             <img id="img_right_array" src = {rightArray} alt={"rightArray"} />
