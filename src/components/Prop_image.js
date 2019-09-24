@@ -8,27 +8,37 @@ import leftArray from '../img/aligned-to-the-left.png';
 import centerArray from '../img/center-align.png';
 import rightArray from '../img/align-text-right.png';
 import justifyArray from '../img/justify.png';
+import BorderPop from './BorderPop.js';
+import PaddingPop from './PaddingPop.js';
+import MarginPop from './MarginPop.js';
+import FileInfoPop_image from './FileInfoPop_image.js';
 
 const Prop_image = (e) => {
     const [startDate, setStartDate] = useState(new Date());
-    const title = (e.info).split('-');
+    const title = (e.info).split(' ');
+    const [showPop, setShowPop] = useState({
+      borderPop: false,
+      paddingPop: false,
+      marginPop: false,
+      fileInfoPop: false
+    });
+    
     return(
         <main>  
             <div className="property_section">
-            <div className="propTitle">{title[0]}</div>
-            <input className="propName" placeholder={title[1]}/>
+            <input className="propName" placeholder={title[0]}/><div className="propTitle">{title[1]}</div>
             <div className="boxTitle">Box</div>
             <div className="prop_width_tx">width</div> <input className="prop_width"/><div className="prop_width_px">px</div>
             <div className="prop_height_tx">height</div> <input className="prop_height"/><div className="prop_height_px">px</div>
-            <div className="borderTitle">border</div> <img className="border_pop" src = {downArrow} alt={"down"} />
-            <div id="border_section"></div>
-            <div className="paddingTitle">padding</div> <img className="padding_pop" src = {downArrow} alt={"down"} />
-            <div id="padding_section"></div>
-            <div className="marginTitle">margin</div> <img className="margin_pop" src = {downArrow} alt={"down"} />
-            <div id="margin_section"></div>
+            <div className="borderTitle">border</div> <img className="border_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({borderPop : !showPop.borderPop})}/>
+            <div id="border_section">{showPop.borderPop ? <BorderPop/> : null}</div>
+            <div className="paddingTitle">padding</div> <img className="padding_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({paddingPop : !showPop.paddingPop})}/>
+            <div id="padding_section">{showPop.paddingPop ? <PaddingPop/> : null}</div>
+            <div className="marginTitle">margin</div> <img className="margin_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({marginPop : !showPop.marginPop})}/>
+            <div id="margin_section">{showPop.marginPop ? <MarginPop/> : null}</div>
             <div className="backgroundTitle">background-color</div>
-            <div className="background_section"></div>
-            <div className="arrayTitle">정렬</div> 
+            <div id="background_section"></div>
+            <div className="arrayTitle">array</div> 
             <img id="img_left_array" src = {leftArray} alt={"leftArray"} />
             <img id="img_center_array" src = {centerArray} alt={"centerArray"} />
             <img id="img_right_array" src = {rightArray} alt={"rightArray"} />
@@ -68,7 +78,8 @@ const Prop_image = (e) => {
             <DatePicker className="photoDate" dateFormat="yyyy/MM/dd" selected={startDate} onChange={date => setStartDate(date)}/>
             <div className="photoPlace_tx">촬영장소</div>
             <input className="photoPlace"/>
-            <div className="fileInfoTitle">파일정보</div> <img id="img_down_file" src = {downArrow} alt={"down"} />
+            <div className="fileInfoTitle">파일정보</div> <img id="img_down_file" src = {downArrow} alt={"down"} onClick={()=>setShowPop({fileInfoPop : !showPop.fileInfoPop})}/>
+            <div id="fileInfo_section">{showPop.fileInfoPop ? <FileInfoPop_image/> : null}</div>
             <div className="markTitle">워터마크</div> <input type="checkbox" id="mark" name="mark" value="mark"></input>
             </div>
             <div className="prop_button">

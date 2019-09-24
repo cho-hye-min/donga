@@ -11,27 +11,8 @@ import PaddingPop from './PaddingPop.js';
 import MarginPop from './MarginPop.js';
 import ComponentList from './ComponentList';
 
-/*const handlePop = (e) => {
-  const className = e.target.className;
-  switch(className){
-    case 'border_pop':
-      ReactDOM.render(<BorderPop />, document.getElementById('border_section'));
-      break;
-    case 'padding_pop':
-      ReactDOM.render(<PaddingPop />, document.getElementById('padding_section'));
-      break;
-    case 'margin_pop':
-      ReactDOM.render(<MarginPop />, document.getElementById('margin_section'));
-      break;
-    default:
-      break;
-  }
-
-};*/
-
-
 const Prop_text = (e) => {    
-   const title = (e.info).split('-');
+   const title = (e.info).split(' ');
 
    const [showPop, setShowPop] = useState({
      borderPop: false,
@@ -43,19 +24,18 @@ const Prop_text = (e) => {
     return(
         <>  
             <div className="property_section">
-            <div className="propTitle">{title[0]}</div>
-            <input className="propName" placeholder={title[1]}/>
+            <input className="propName" placeholder={title[0]}/><div className="propTitle">{title[1]}</div>
             <div className="boxTitle">Box</div>
             <div className="prop_width_tx">width</div> <input className="prop_width"/><div className="prop_width_px">px</div>
             <div className="prop_height_tx">height</div> <input className="prop_height"/><div className="prop_height_px">px</div>
-            <div className="borderTitle">border</div> <img className="border_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({showPop.borderPop:true}))}/>
+            <div className="borderTitle">border</div> <img className="border_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({borderPop : !showPop.borderPop})}/>
             <div id="border_section">{showPop.borderPop ? <BorderPop/> : null}</div>
-            <div className="paddingTitle">padding</div> <img className="padding_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop(true)}/>
+            <div className="paddingTitle">padding</div> <img className="padding_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({paddingPop : !showPop.paddingPop})}/>
             <div id="padding_section">{showPop.paddingPop ? <PaddingPop/> : null}</div>
-            <div className="marginTitle">margin</div> <img className="margin_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop(true)}/>
+            <div className="marginTitle">margin</div> <img className="margin_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({marginPop : !showPop.marginPop})}/>
             <div id="margin_section">{showPop.marginPop ? <MarginPop/> : null}</div>
             <div className="backgroundTitle">background-color</div> 
-            <div className="background_section"></div>
+            <div id="background_section"></div>
             <div className="arrayTitle">array</div> 
             <img id="img_left_array" src = {leftArray} alt={"leftArray"} />
             <img id="img_center_array" src = {centerArray} alt={"centerArray"} />

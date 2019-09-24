@@ -5,20 +5,20 @@ import './TemplateEditor.css';
 import newpage from '../img/positive-sign.png';
 import right from '../img/right-arrow.png';
 import left from '../img/left-arrow.png';
-import TemplateList from '../components/TemplateList.js';
-import ComponentList from '../components/ComponentList.js';
-import TemplateProp from '../components/TemplateProp.js';
-import ComponentProp from '../components/ComponentProp.js';
+import TemplateList from './TemplateList.js';
+import ComponentList from './ComponentList.js';
+import TemplateProp from './TemplateProp.js';
+import ComponentProp from './ComponentProp.js';
+import NewTemplate from './NewTemplate.js';
 import { AST_False } from 'terser';
 
 class TemplateEditor_main extends Component{
-
     state ={
-        active_list: false,
-        active_prop: false
+            active_list: false,
+            active_prop: false,
+            isOpen: false
     };
 
-    
 
     handleMove = e => {
         e.preventDefault();
@@ -75,6 +75,12 @@ class TemplateEditor_main extends Component{
         }
     }
 
+    handleNewTemplate = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
     render(){
         return(
             <>
@@ -95,7 +101,8 @@ class TemplateEditor_main extends Component{
                     </div>
                     <div className="editing">
                         <div className="newPage_back">
-                            <img className="img_newPage" src={newpage} alt={"newpage"}/>
+                            <img className="img_newPage" src={newpage} alt={"newpage"} onClick={this.handleNewTemplate}/>
+                            <div id="newPage_section">{this.state.isOpen ? <NewTemplate handleNewTemplate={this.handleNewTemplate}/> : null}</div>
                         </div>
                         <div className="button_bk">
                             <button className="reset" >초기화</button>
