@@ -16,6 +16,11 @@ const Prop_text = (component) => {
   const id = component.info.ID;
   const attr = component.info.ATTRIBUTE;
 
+  const [showPop, setShowPop] = useState({
+    borderPop: false,
+    paddingPop: false,
+    marginPop: false
+  });
 
   const [valEdit, setValue] = useState({
     prop_width: attr.BOX.WIDTH,
@@ -24,12 +29,6 @@ const Prop_text = (component) => {
     line_height_input: attr.FONT.LINEHEIGHT,
     url_input: attr.LINK.URL,
     field_input: attr.MAPPING.FIELD
-  });
-
-  const [showPop, setShowPop] = useState({
-    borderPop: false,
-    paddingPop: false,
-    marginPop: false
   });
 
   const { prop_width, prop_height, size_input, line_height_input, url_input, field_input } = valEdit;
@@ -101,7 +100,8 @@ const Prop_text = (component) => {
               <option value="굴림">굴림</option>
               <option value="맑음고딕">맑음고딕</option>
             </select>
-            <div className="style">style</div> <select className="styleSection" defaultValue={attr.FONT.FONTSTYLE}>
+            <div className="style">style</div> 
+            <select className="styleSection" defaultValue={attr.FONT.FONTSTYLE}>
               <option value="normal">normal</option>
               <option value="italic">italic</option>
               <option value="oblique">oblique</option></select>

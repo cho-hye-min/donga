@@ -694,14 +694,12 @@ class ComponentList extends Component {
           "FILENAME": "",
           "FILEPATH": "",
           "FILEFORMAT": "",
-          "FILESIZE": "",
           "DESCRIPTION": "",
           "CAPTION": "",
-          "WIDTH": "",
-          "HEIGHT": "",
-          "RESOLUTION": "",
-          "WATERMARK": false
-        }
+          "FILESIZE": "",
+          "RESOLUTION": ""
+        },
+        "WATERMARK": false
       }
 
     }],
@@ -752,6 +750,10 @@ class ComponentList extends Component {
         "MAPPING": {
           "FIELD": "LABEL"
         },
+        "PHOTOINFO": {
+          "PHOTODATE": "",
+          "PHOTOPLACE": ""
+        },
         "FILEINFO": {
           "FILENAME": "",
           "FILEPATH": "",
@@ -759,10 +761,10 @@ class ComponentList extends Component {
           "FILESIZE": "",
           "DESCRIPTION": "",
           "RESOLUTION": "",
-          "PLAYTIME": ""
+          "PLAYTIME": "",
+          "HEADIMAGE": ""
         }
       }
-
     }
     ]
   }

@@ -12,7 +12,7 @@ const MarginPop = (margin) => {
 
   const { pop_margin_top_input, pop_margin_right_input, pop_margin_bottom_input, pop_margin_left_input } = valEdit;
 
-  const handleMargin = (e) => {
+  const handleVal = (e) => {
 
     const newVal = {
       ...valEdit,
@@ -25,13 +25,13 @@ const MarginPop = (margin) => {
   return (
     <div className="pop_margin">
       <div className="pop_margin_top">margin-top</div>
-      <input className="pop_margin_top_input" value={pop_margin_top_input} onChange={handleMargin} /><div className="pop_margin_top_px">px</div>
+      <input className="pop_margin_top_input" value={pop_margin_top_input} onChange={handleVal} /><div className="pop_margin_top_px">px</div>
       <div className="pop_margin_right">margin-right</div>
-      <input className="pop_margin_right_input" value={pop_margin_right_input} onChange={handleMargin} /><div className="pop_margin_right_px">px</div>
+      <input className="pop_margin_right_input" value={pop_margin_right_input} onChange={handleVal} /><div className="pop_margin_right_px">px</div>
       <div className="pop_margin_bottom">margin-bottom</div>
-      <input className="pop_margin_bottom_input" value={pop_margin_bottom_input} onChange={handleMargin} /><div className="pop_margin_bottom_px">px</div>
+      <input className="pop_margin_bottom_input" value={pop_margin_bottom_input} onChange={handleVal} /><div className="pop_margin_bottom_px">px</div>
       <div className="pop_margin_left">margin-left</div>
-      <input className="pop_margin_left_input" value={pop_margin_left_input} onChange={handleMargin} /><div className="pop_margin_left_px">px</div>
+      <input className="pop_margin_left_input" value={pop_margin_left_input} onChange={handleVal} /><div className="pop_margin_left_px">px</div>
 
     </div>
   );
