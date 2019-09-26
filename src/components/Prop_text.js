@@ -11,13 +11,13 @@ import PaddingPop from './PaddingPop.js';
 import MarginPop from './MarginPop.js';
 import ComponentList from './ComponentList';
 
-const Prop_text = (component) => {    
-   const title = component.info.TITLE;
-   const id = component.info.ID;
-   const attr = component.info.ATTRIBUTE;
+const Prop_text = (component) => {
+  const title = component.info.TITLE;
+  const id = component.info.ID;
+  const attr = component.info.ATTRIBUTE;
 
 
-   const [valEdit, setValue] = useState({
+  const [valEdit, setValue] = useState({
     prop_width: attr.BOX.WIDTH,
     prop_height: attr.BOX.HEIGHT,
     size_input: attr.FONT.FONTSIZE,
@@ -31,10 +31,10 @@ const Prop_text = (component) => {
     paddingPop: false,
     marginPop: false
   });
-  
-   const {prop_width, prop_height, size_input, line_height_input, url_input, field_input} = valEdit;
 
-   const handleVal = (e) =>{
+  const { prop_width, prop_height, size_input, line_height_input, url_input, field_input } = valEdit;
+
+  const handleVal = (e) => {
 
     const newVal = {
       ...valEdit,
@@ -42,9 +42,19 @@ const Prop_text = (component) => {
     };
 
     setValue(newVal);
-   
-     };
 
+  };
+
+  useEffect(() => {
+    setValue({
+    prop_width: attr.BOX.WIDTH,
+    prop_height: attr.BOX.HEIGHT,
+    size_input: attr.FONT.FONTSIZE,
+    line_height_input: attr.FONT.LINEHEIGHT,
+    url_input: attr.LINK.URL,
+    field_input: attr.MAPPING.FIELD
+    });
+  }, [title]);
 
    return(
         <>  
