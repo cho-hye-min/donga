@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import Prop_image from './Prop_image.js';
 
-const prop_component_img = (e) =>{
-    const compInfo = e.target.innerText;
-    const comp = document.getElementById(e.target.id);
-    const compId = (e.target.id).charAt(1);
+const prop_component_img = (component, firstId, lastId) =>{
+    const comp = document.getElementById(component.ID);
+    const compId = (component.ID).substring(1, (component.ID).length);
 
-    const compLength = document.getElementsByClassName('compo').length;
-    for(var i=1; i<=compLength; i++){
+    //const compLength = document.getElementsByClassName('compo').length;
+    const first = parseInt(firstId);
+    const last = parseInt(lastId);
+
+    for(var i=first; i<=last; i++){
         if(i === parseInt(compId)){
             comp.style.backgroundColor = '#e0eaec';
             comp.style.fontWeight = '550';
@@ -23,12 +25,18 @@ const prop_component_img = (e) =>{
             oth_comp.style.color = '#bbb8b8';
         }
     }
-   ReactDOM.render(<Prop_image info={compInfo}/>, document.getElementById('properties_section'));
+   ReactDOM.render(<Prop_image info={component}/>, document.getElementById('properties_section'));
 };
 class Component_image extends Component{
     render(){
     const image_data = this.props.image_data;
-    const componentList = image_data.map(component => (<button className="compo" id={component.ID} onClick={prop_component_img}> {component.TITLE} ({component.ID}) </button>));
+    const Id = image_data[0].ID;
+    const firstId = Id.substring(1, Id.length);
+
+    const Id2 = image_data[(image_data.length)-1].ID;
+    const lastId = Id2.substring(1, Id2.length);
+
+    const componentList = image_data.map(component => (<button className="compo" id={component.ID} onClick={()=>prop_component_img(component, firstId, lastId)}> {component.TITLE} ({component.ID}) </button>));
         
     return(
         <div className="compoSection">

@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import Prop_video from './Prop_video.js';
 
-const prop_component_video = (e) =>{
-    const compInfo = e.target.innerText;
-    const comp = document.getElementById(e.target.id);
-    const compId = (e.target.id).charAt(1);
+const prop_component_video = (component, firstId, lastId) =>{
+    const comp = document.getElementById(component.ID);
+    const compId = (component.ID).substring(1, (component.ID).length);
 
-    const compLength = document.getElementsByClassName('compo').length;
-    for(var i=1; i<=compLength; i++){
+    const first = parseInt(firstId);
+    const last = parseInt(lastId);
+
+    for(var i=first; i<=last; i++){
         if(i === parseInt(compId)){
             comp.style.backgroundColor = '#e0eaec';
             comp.style.fontWeight = '550';
@@ -23,13 +24,20 @@ const prop_component_video = (e) =>{
             oth_comp.style.color = '#bbb8b8';
         }
     }
-   ReactDOM.render(<Prop_video info={compInfo}/>, document.getElementById('properties_section'));
+   ReactDOM.render(<Prop_video info={component}/>, document.getElementById('properties_section'));
 };
 
 class Component_video extends Component{
     render(){
     const video_data = this.props.video_data;
-    const componentList = video_data.map(component => (<button className="compo" id={component.ID} onClick={prop_component_video}> {component.TITLE} ({component.ID}) </button>));
+
+    const Id = video_data[0].ID;
+    const firstId = Id.substring(1, Id.length);
+
+    const Id2 = video_data[(video_data.length)-1].ID;
+    const lastId = Id2.substring(1, Id2.length);
+
+    const componentList = video_data.map(component => (<button className="compo" id={component.ID} onClick={()=>prop_component_video(component, firstId, lastId)}> {component.TITLE} ({component.ID}) </button>));
     
     return(
         <main className="compoSection">

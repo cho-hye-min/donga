@@ -16,31 +16,38 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 550,
           "HEIGHT": 40,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 30,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
-          "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": ""
+          "BORDER": {
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING":{
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0,
+          },
+          "MARGIN":{
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
+          "BACKGROUNDCOLOR": "#FFFFFF",
+          "TEXTALIGN": ""
         },
         "ICON": {
+          "TYPE": "none",
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 19,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 19,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 40
+          "LINEHEIGHT": 40
         },
         "LINK": {
           "URL": "",
@@ -58,31 +65,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 550,
           "HEIGHT": 40,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 30,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": ""
+          "TEXTALIGN": ""
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 17,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 17,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 40
+          "LINEHEIGHT": 40
         },
         "LINK": {
           "URL": "",
@@ -100,31 +113,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 550,
           "HEIGHT": 40,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 30,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": ""
+          "TEXTALIGN": ""
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 17,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 17,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 40
+          "LINEHEIGHT": 40
         },
         "LINK": {
           "URL": "",
@@ -142,31 +161,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 550,
           "HEIGHT": 80,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 20,
-          "MARGIN-RIGHT": 30,
-          "MARGIN-BOTTOM": 20,
-          "MARGIN-LEFT": 30,
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 15,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 15,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 40
+          "LINEHEIGHT": 40
         },
         "LINK": {
           "URL": "",
@@ -184,31 +209,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 600,
           "HEIGHT": 800,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 10,
-          "PADDING-RIGHT": 20,
-          "PADDING-BOTTOM": 10,
-          "PADDING-LEFT": 20,
-          "MARGIN-TOP": 10,
-          "MARGIN-RIGHT": 0,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 10,
+            "PADDINGRIGHT": 20,
+            "PADDINGBOTTOM": 10,
+            "PADDINGLEFT": 20
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 14,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 14,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#363636",
-          "LINE-HEIGHT": 20
+          "LINEHEIGHT": 20
         },
         "LINK": {
           "URL": "",
@@ -226,31 +257,38 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 500,
           "HEIGHT": 60,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 20,
-          "MARGIN-RIGHT": 30,
-          "MARGIN-BOTTOM": 20,
-          "MARGIN-LEFT": 30,
+
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 14,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 14,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 40
+          "LINEHEIGHT": 40
         },
         "LINK": {
           "URL": "",
@@ -268,31 +306,38 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 0,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "돋움",
-          "FONT-SIZE": 12,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "",
+          "FONTFAMILY": "돋움",
+          "FONTSIZE": 12,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "",
           "COLOR": "#8b8b8b",
-          "LINE-HEIGHT": 0
+          "LINEHEIGHT": 0
         },
         "LINK": {
           "URL": "",
@@ -310,29 +355,36 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 500,
           "HEIGHT": 40,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 39,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 42,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 0,
-          "MARGIN-BOTTOM": 10,
-          "MARGIN-LEFT": 0,
+
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 39,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 42
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 14,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 14,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "",
           "COLOR": "#191919",
           "LINE-HEIGHT": 0
         },
@@ -352,31 +404,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 500,
           "HEIGHT": 61,
-          "BORDER-WIDTH": 1,
-          "BORDER-STYLE": "solid",
-          "BORDER-COLOR": "#f2f3f5",
-          "PADDING-TOP": 4,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 4,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 0,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+          "BORDER":{
+            "BORDERWIDTH": 1,
+            "BORDERSTYLE": "solid",
+            "BORDERCOLOR": "#f2f3f5"
+          },
+          "PADDING": {
+            "PADDINGTOP": 4,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 4,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 15,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 15,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 20
+          "LINEHEIGHT": 20
         },
         "LINK": {
           "URL": "",
@@ -394,31 +452,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 25,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "돋움",
-          "FONT-SIZE": 12,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "",
+          "FONTFAMILY": "돋움",
+          "FONTSIZE": 12,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 0
+          "LINEHEIGHT": 0
         },
         "LINK": {
           "URL": "",
@@ -436,31 +500,38 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 25,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "돋움",
-          "FONT-SIZE": 12,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "",
+          "FONTFAMILY": "돋움",
+          "FONTSIZE": 12,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "",
           "COLOR": "#191919",
-          "LINE-HEIGHT": 0
+          "LINEHEIGHT": 0
         },
         "LINK": {
           "URL": "",
@@ -478,31 +549,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER-WIDTH": 1,
-          "BORDER-STYLE": "#4762ae",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 3,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 0,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+          "BORDER":{
+            "BORDERWIDTH": 1,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": "#4762ae"
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 3,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 14,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 14,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#4762ae",
-          "LINE-HEIGHT": 0
+          "LINEHEIGHT": 0
         },
         "LINK": {
           "URL": "",
@@ -520,31 +597,37 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER-WIDTH": 1,
-          "BORDER-STYLE": "#4762ae",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 3,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 0,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+          "BORDER":{
+            "BORDERWIDTH": 1,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": "#4762ae"
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 3,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#FFFFFF",
-          "TEXT-ALIGN": "center"
+          "TEXTALIGN": "center"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 14,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 14,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#4762ae",
-          "LINE-HEIGHT": 0
+          "LINEHEIGHT": 0
         },
         "LINK": {
           "URL": "",
@@ -563,31 +646,38 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 180,
           "HEIGHT": 120,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 20,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#e5e5e5",
-          "TEXT-ALIGN": "left"
+          "TEXTALIGN": "left"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 14,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 14,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#4762ae",
-          "LINE-HEIGHT": 0
+          "LINEHEIGHT": 0
         },
         "LINK": {
           "URL": "",
@@ -622,31 +712,38 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 840,
           "HEIGHT": 470,
-          "BORDER-WIDTH": 0,
-          "BORDER-STYLE": "",
-          "BORDER-COLOR": "",
-          "PADDING-TOP": 0,
-          "PADDING-RIGHT": 0,
-          "PADDING-BOTTOM": 0,
-          "PADDING-LEFT": 0,
-          "MARGIN-TOP": 0,
-          "MARGIN-RIGHT": 0,
-          "MARGIN-BOTTOM": 0,
-          "MARGIN-LEFT": 0,
+
+          "BORDER":{
+            "BORDERWIDTH": 0,
+            "BORDERSTYLE": "",
+            "BORDERCOLOR": ""
+          },
+          "PADDING": {
+            "PADDINGTOP": 0,
+            "PADDINGRIGHT": 0,
+            "PADDINGBOTTOM": 0,
+            "PADDINGLEFT": 0
+          },
+          "MARGIN": {
+            "MARGINTOP": 0,
+            "MARGINRIGHT": 30,
+            "MARGINBOTTOM": 0,
+            "MARGINLEFT": 0
+          },
           "BACKGROUND-COLOR": "#000000",
-          "TEXT-ALIGN": "left"
+          "TEXTALIGN": "left"
         },
         "ICON": {
           "NUMBER": "",
           "LOCATION": "front"
         },
         "FONT": {
-          "FONT-FAMILY": "맑은 고딕",
-          "FONT-SIZE": 14,
-          "FONT-STYLE": "normal",
-          "FONT-WEIGHT": "bold",
+          "FONTFAMILY": "맑은 고딕",
+          "FONTSIZE": 14,
+          "FONTSTYLE": "normal",
+          "FONTWEIGHT": "bold",
           "COLOR": "#4762ae",
-          "LINE-HEIGHT": 0
+          "LINEHEIGHT": 0
         },
         "LINK": {
           "URL": "",

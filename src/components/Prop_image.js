@@ -13,9 +13,12 @@ import PaddingPop from './PaddingPop.js';
 import MarginPop from './MarginPop.js';
 import FileInfoPop_image from './FileInfoPop_image.js';
 
-const Prop_image = (e) => {
+const Prop_image = (component) => {
     const [startDate, setStartDate] = useState(new Date());
-    const title = (e.info).split(' ');
+    const title = component.info.TITLE;
+    const id = component.info.ID;
+    const attr = component.info.ATTRIBUTE;
+    
     const [showPop, setShowPop] = useState({
       borderPop: false,
       paddingPop: false,
@@ -26,19 +29,19 @@ const Prop_image = (e) => {
     return(
         <main>  
             <div className="property_section">
-            <input className="propName" placeholder={title[0]}/><div className="propTitle">{title[1]}</div>
+            <input className="propName" placeholder={title}/><div className="propTitle">{id}</div>
             <div className="boxTitle">Box</div>
-            <div className="prop_width_tx">width</div> <input className="prop_width"/><div className="prop_width_px">px</div>
-            <div className="prop_height_tx">height</div> <input className="prop_height"/><div className="prop_height_px">px</div>
+            <div className="prop_width_tx">width</div> <input className="prop_width" value={attr.BOX.WIDTH}/><div className="prop_width_px">px</div>
+            <div className="prop_height_tx">height</div> <input className="prop_height" value={attr.BOX.HEIGHT}/><div className="prop_height_px">px</div>
             <div className="borderTitle">border</div> <img className="border_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({borderPop : !showPop.borderPop})}/>
-            <div id="border_section">{showPop.borderPop ? <BorderPop/> : null}</div>
+            <div id="border_section">{showPop.borderPop ? <BorderPop borderInfo={attr.BOX.BORDER}/> : null}</div>
             <div className="paddingTitle">padding</div> <img className="padding_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({paddingPop : !showPop.paddingPop})}/>
-            <div id="padding_section">{showPop.paddingPop ? <PaddingPop/> : null}</div>
+            <div id="padding_section">{showPop.paddingPop ? <PaddingPop paddingInfo={attr.BOX.PADDING}/> : null}</div>
             <div className="marginTitle">margin</div> <img className="margin_pop" src = {downArrow} alt={"down"} onClick={()=>setShowPop({marginPop : !showPop.marginPop})}/>
-            <div id="margin_section">{showPop.marginPop ? <MarginPop/> : null}</div>
+            <div id="margin_section">{showPop.marginPop ? <MarginPop marginInfo={attr.BOX.MARGIN}/> : null}</div>
             <div className="backgroundTitle">background-color</div>
             <div id="background_section"></div>
-            <div className="arrayTitle">array</div> 
+            <div className="arrayTitle">정렬</div> 
             <img id="img_left_array" src = {leftArray} alt={"leftArray"} />
             <img id="img_center_array" src = {centerArray} alt={"centerArray"} />
             <img id="img_right_array" src = {rightArray} alt={"rightArray"} />
@@ -55,8 +58,12 @@ const Prop_image = (e) => {
             <input type="checkbox" id="icon_front" name="icon" value="front"></input> <div className="front_tx">앞</div>
             <div className="back_tx">뒤</div> <input type="checkbox" id="icon_back" name="icon" value="back"></input>
             <div className="fontTitle">Font</div>
-            <div className="size">size</div><input className="size_input"/>
-            <div className="weight">weight</div><input className="weight_input"/>
+            <div className="size">size</div><input className="size_input" value={attr.FONT.FONTSIZE}/><div className="size_px">px</div>
+            <div className="weight">weight</div><select className="weightSection" defaultValue="normal">
+              <option value="normal">normal</option>
+              <option value="lighter">lighter</option>
+              <option value="bold">bold</option>
+            </select>
             <div className="family">family</div>  <select className="familySection" defaultValue="돋음">
               <option value="돋음">돋음</option>
               <option value="궁서">궁서</option>
