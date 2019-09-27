@@ -11,12 +11,13 @@ import TemplateProp from './TemplateProp.js';
 import ComponentProp from './ComponentProp.js';
 import NewTemplate from './NewTemplate.js';
 import { AST_False } from 'terser';
+import Prop_text from './Prop_text';
 
 class TemplateEditor_main extends Component{
-    state ={
-            active_list: false,
-            active_prop: false,
-            isOpen: false
+    state = {
+        active_list: false,
+        active_prop: false,
+        isOpen: false
     };
 
 
@@ -56,7 +57,7 @@ class TemplateEditor_main extends Component{
             case "template_prop":
             case "temp_prop":
                 if (className === 'temp_prop') {
-                    ReactDOM.render(<TemplateProp />, document.getElementById('prop_view'));
+                    //ReactDOM.render(<TemplateProp />, document.getElementById('prop_view'));
                     const currentState = this.state.active_prop;
                     this.setState({ active_prop: !currentState });
                 }
@@ -64,7 +65,7 @@ class TemplateEditor_main extends Component{
             case "component_prop":
             case "com_prop":
                 if(className === 'component_prop'){
-                    ReactDOM.render(<ComponentProp />, document.getElementById('prop_view'));
+                    //ReactDOM.render(<ComponentProp />, document.getElementById('prop_view'));
                     const currentState2 = this.state.active_prop;
                     this.setState({ active_prop: !currentState2 });
                 }
@@ -74,7 +75,6 @@ class TemplateEditor_main extends Component{
                 break;
         }
     }
-
     handleNewTemplate = () => {
         this.setState({
             isOpen: !this.state.isOpen
@@ -118,7 +118,7 @@ class TemplateEditor_main extends Component{
                          onClick={this.handleProp}>Template 속성</div>
                         <div className={this.state.active_prop ? 'com_prop' : 'component_prop'}
                          onClick={this.handleProp}>Component 속성</div>
-                        <div id="prop_view"><TemplateProp></TemplateProp></div>
+                        <div id="prop_view"></div>
                         <div id="properties_section"></div>
                     </div>  
                 </div>

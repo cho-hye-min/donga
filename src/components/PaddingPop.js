@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './TemplateEditor.css';
 
 const PaddingPop = (padding) =>{
@@ -18,8 +18,16 @@ const PaddingPop = (padding) =>{
       [e.target.className]: e.target.value
     };
     setValue(newVal);
-  }
+  };
 
+  useEffect(() => {
+    setValue({
+    pop_padding_top_input: padding.paddingInfo.PADDINGTOP,
+    pop_padding_right_input: padding.paddingInfo.PADDINGRIGHT,
+    pop_padding_bottom_input: padding.paddingInfo.PADDINGBOTTOM,
+    pop_padding_left_input: padding.paddingInfo.PADDINGLEFT
+    });
+  }, [padding.title]); 
     return(
         <div className="pop_padding">
           <div className="pop_padding_top">padding-top</div>

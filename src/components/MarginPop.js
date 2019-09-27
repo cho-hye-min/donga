@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './TemplateEditor.css';
 
 const MarginPop = (margin) => {
@@ -21,6 +21,15 @@ const MarginPop = (margin) => {
 
     setValue(newVal);
   };
+
+  useEffect(() => {
+    setValue({
+      pop_margin_top_input: margin.marginInfo.MARGINTOP,
+      pop_margin_right_input: margin.marginInfo.MARGINRIGHT,
+      pop_margin_bottom_input: margin.marginInfo.MARGINBOTTOM,
+      pop_margin_left_input: margin.marginInfo.MARGINLEFT
+    });
+  }, [margin.title]); 
 
   return (
     <div className="pop_margin">

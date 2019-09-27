@@ -1,4 +1,4 @@
-import React , {useState}from 'react';
+import React , {useState , useEffect} from 'react';
 import './TemplateEditor.css';
 
 const FileInfoPop_video = (file) => {
@@ -26,6 +26,19 @@ const FileInfoPop_video = (file) => {
       };
       setValue(newVal);
 };
+
+useEffect(() => {
+  setValue({
+    pop_file_video_name_input: file.fileInfo.FILENAME,
+    pop_file_video_path_input: file.fileInfo.FILEPATH,
+    pop_file_video_format_input: file.fileInfo.FILEFORMAT,
+    pop_file_video_size_input: file.fileInfo.FILESIZE,
+    pop_file_video_resolution_input: file.fileInfo.RESOLUTION,
+    pop_file_video_playtime_input: file.fileInfo.PLAYTIME,
+    pop_file_video_headImage_input: file.fileInfo.HEADIMAGE,
+    pop_file_video_description_tx: file.fileInfo.DESCRIPTION
+  });
+}, [file.title]); 
 
 return (
   <div className="pop_file_video">

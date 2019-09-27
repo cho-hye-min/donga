@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './TemplateEditor.css';
 
 const FileInfoPop_image = (file) => {
@@ -24,6 +24,18 @@ const FileInfoPop_image = (file) => {
     };
     setValue(newVal);
   };
+
+  useEffect(() => {
+    setValue({
+      pop_file_name_input: file.fileInfo.FILENAME,
+      pop_file_path_input: file.fileInfo.FILEPATH,
+      pop_file_format_input: file.fileInfo.FILEFORMAT,
+      pop_file_caption_input: file.fileInfo.CAPTION,
+      pop_file_size_input: file.fileInfo.FILESIZE,
+      pop_file_resolution_input: file.fileInfo.RESOLUTION,
+      pop_file_description_tx: file.fileInfo.DESCRIPTION
+    });
+  }, [file.title]); 
 
   return (
     <div className="pop_file">
