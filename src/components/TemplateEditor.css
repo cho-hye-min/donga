@@ -1482,3 +1482,58 @@
     font-weight: 550;
     color: #354145;
 }
+
+.regTitle{
+    width: 71px;
+    margin-left: 0.3rem;
+    margin-top: 3rem;
+    margin-bottom: 0.4rem;
+    color: #556998;
+    font-weight: 550;
+    font-size: 15px;
+}
+.regDateTx{
+    width: 60px;
+    margin-left: 0.6rem;
+    margin-top: 0.8rem;
+    color: #a09d9d;
+    font-weight: 550;
+    font-size: 14px;
+}
+.regDate{
+    float:left;
+    margin-top: -2.25rem;
+    margin-left: 1.2rem;
+    border-radius: 0.3rem;
+    border: 1.4px solid #9c7d7d;
+    padding: 0.2rem;
+}
+.regNameTx{
+    width: 43px;
+    margin-left: 1.2rem;
+    margin-top: -0.5rem;
+    color: #a09d9d;
+    font-weight: 550;
+    font-size: 14px;
+}
+.regName_input{
+    float:left;
+    border-bottom: 1px solid #a59292;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 171px;
+    margin-top: -1.3rem;
+    margin-left: 5rem;
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+}
+.component{
+    width: 95px;
+    margin-left: 0.2rem;
+    margin-top: 3rem;
+    margin-bottom: 0.4rem;
+    color: #556998;
+    font-weight: 550;
+    font-size: 14.5px;
+}

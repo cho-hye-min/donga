@@ -11,8 +11,8 @@ import PaddingPop from './PaddingPop.js';
 import MarginPop from './MarginPop.js';
 import ComponentList from './ComponentList';
 
+
 const Prop_text = (component) => {
-  //const title = component.info.TITLE;
   const id = component.info.ID;
   const attr = component.info.ATTRIBUTE;
 

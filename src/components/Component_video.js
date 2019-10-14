@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import Prop_video from './Prop_video.js';
+import Prop from './Prop.js';
 
 const prop_component_video = (component, firstId, lastId) =>{
     const comp = document.getElementById(component.ID);
@@ -24,7 +25,9 @@ const prop_component_video = (component, firstId, lastId) =>{
             oth_comp.style.color = '#bbb8b8';
         }
     }
-   ReactDOM.render(<Prop_video info={component}/>, document.getElementById('properties_section'));
+   //ReactDOM.render(<Prop_video info={component}/>, document.getElementById('properties_section'));
+   const type = 'video';
+    Prop(component, type);
 };
 
 class Component_video extends Component{

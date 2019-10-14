@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import Prop_image from './Prop_image.js';
+import Prop from './Prop.js';
+import Prop_tab from './Prop_tab.js';
 
 const prop_component_img = (component, firstId, lastId) =>{
     const comp = document.getElementById(component.ID);
@@ -25,7 +27,10 @@ const prop_component_img = (component, firstId, lastId) =>{
             oth_comp.style.color = '#bbb8b8';
         }
     }
-   ReactDOM.render(<Prop_image info={component}/>, document.getElementById('properties_section'));
+    // ReactDOM.render(<Prop_image info={component}/>, document.getElementById('properties_section'));
+
+    const type = 'image';
+    Prop(component, type);
 };
 class Component_image extends Component{
     render(){

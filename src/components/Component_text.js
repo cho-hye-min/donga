@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import Prop_text from './Prop_text.js';
+import Prop from './Prop.js';
+import Prop_tab from './Prop_tab.js';
 
 
 class Component_text extends Component {
@@ -28,8 +30,12 @@ class Component_text extends Component {
                 oth_comp.style.color = '#bbb8b8';
             }
         }
-        ReactDOM.render(<Prop_text info={component} />, document.getElementById('properties_section'));
-
+        /*ReactDOM.render(
+                <Prop info={component}/>,
+            document.getElementById('properties_section')
+        );*/
+        const type = 'text';
+        Prop(component, type);
     };
 
     render() {

@@ -7,26 +7,25 @@ import right from '../img/right-arrow.png';
 import left from '../img/left-arrow.png';
 import TemplateList from './TemplateList.js';
 import ComponentList from './ComponentList.js';
-import TemplateProp from './TemplateProp.js';
-import ComponentProp from './ComponentProp.js';
 import NewTemplate from './NewTemplate.js';
+import Prop_tab from './Prop_tab.js';
+import List_tab from './List_tab.js';
 import { AST_False } from 'terser';
-import Prop_text from './Prop_text';
+
 
 class TemplateEditor_main extends Component{
     state = {
-        active_list: false,
-        active_prop: false,
+        //active_list: false,
+        //active_prop: false,
         isOpen: false
     };
 
-
+    
     handleMove = e => {
         e.preventDefault();
-        //window.location = './TemplateEditor_main.js';
     }
 
-    handleList = (e) =>{
+    /*handleList = (e) =>{
             const className = e.target.className;
             switch(className){
                 case "template_tab":
@@ -49,9 +48,9 @@ class TemplateEditor_main extends Component{
                     ReactDOM.render(<TemplateList />, document.getElementById('list_view'));
                     break;
             }
-    }
+    }*/
 
-    handleProp = (e) =>{
+   /* handleProp = (e) =>{
         const className = e.target.className;
         switch(className){
             case "template_prop":
@@ -71,10 +70,10 @@ class TemplateEditor_main extends Component{
                 }
                 break;
             default:
-                ReactDOM.render(<TemplateProp />, document.getElementById('prop_view'));
                 break;
         }
-    }
+    }*/
+
     handleNewTemplate = () => {
         this.setState({
             isOpen: !this.state.isOpen
@@ -93,10 +92,9 @@ class TemplateEditor_main extends Component{
 
                 <div className="editing_full">
                     <div className="list">
-                        <div className={this.state.active_list ? 'temp_tab' : 'template_tab'}
-                         onClick={this.handleList}>Template</div>
-                        <div className={this.state.active_list ? 'com_tab' : 'component_tab'}
-                         onClick={this.handleList}>Component</div>
+                        <div className="list_edit">
+                        <List_tab></List_tab>
+                        </div>
                         <div id="list_view"><TemplateList></TemplateList></div>
                     </div>
                     <div className="editing">
@@ -114,19 +112,14 @@ class TemplateEditor_main extends Component{
                         </div>
                     </div>
                     <div className="properties">
-                        <div className={this.state.active_prop ? 'temp_prop' : 'template_prop'}
-                         onClick={this.handleProp}>Template 속성</div>
-                        <div className={this.state.active_prop ? 'com_prop' : 'component_prop'}
-                         onClick={this.handleProp}>Component 속성</div>
+                        <div id="prop_edit">
+                        <Prop_tab></Prop_tab></div>
                         <div id="prop_view"></div>
-                        <div id="properties_section"></div>
-                    </div>  
+                    </div>
                 </div>
-             
             </>
 
         );
     }
 }
-
 export default TemplateEditor_main;
