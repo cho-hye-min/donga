@@ -56,11 +56,11 @@
     font-weight: 550;
     font-size: 14.5px;
     color: #bfbfbf;
+    list-style: none;
 }
 .component_tab:hover, .component_prop:hover, .template_tab:hover, .template_prop:hover{
     color: #3983aa;
 }
-
 .template_tab, .template_prop{
     width: 158px;
     height: 26px;
@@ -73,6 +73,7 @@
     font-weight: 550;
     font-size: 14.5px;
     color: #397c96;
+    list-style: none;
 }
 
 .editing{

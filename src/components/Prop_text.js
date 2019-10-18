@@ -16,6 +16,19 @@ const Prop_text = (component) => {
   const id = component.info.ID;
   const attr = component.info.ATTRIBUTE;
 
+  const [isChecked, setChecked] = useState({
+    iconFront: true,
+    iconBack: false,
+    targetNew: true,
+    targetNow:false
+  });
+
+  const toggleChange = (e) => {
+    const id = e.target.id;
+    const checked = isChecked.id;
+    setChecked({ id : !checked});
+  }
+
   const [showPop, setShowPop] = useState({
     borderPop: false,
     paddingPop: false,
@@ -130,8 +143,8 @@ const Prop_text = (component) => {
           <option value="facebook">facebook</option>
           <option value="push_news">push news</option>
         </select>
-        <input type="checkbox" id="icon_front" name="icon" value="front" checked="checked"></input> <div className="front_tx">앞</div>
-        <div className="back_tx">뒤</div> <input type="checkbox" id="icon_back" name="icon" value="back"></input>
+        <input type="checkbox" id="iconFront" name="icon" value="front" checked={isChecked.iconFront} onChange={toggleChange}></input> <div className="front_tx">앞</div>
+        <div className="back_tx">뒤</div> <input type="checkbox" id="iconBack" name="icon" value="back" checked={isChecked.iconBack} onChange={toggleChange}></input>
         <div className="fontTitle">Font</div>
         <div className="size">size</div><input className="size_input" value={size_input} onChange={handleVal} /><div className="size_px">px</div>
         <div className="line_height">line height</div><input className="line_height_input" value={line_height_input} onChange={handleVal} /><div className="line_height_px">px</div>
@@ -154,8 +167,8 @@ const Prop_text = (component) => {
         <div className="linkTitle">Link</div>
         <div className="url_tx">URL</div> <input className="url_input" value={url_input} onChange={handleVal} />
         <div className="target_tx">Target</div>
-        <div className="targetNew_tx">새 창</div> <input type="checkbox" id="targetNew" name="target" value="new" checked="checked"></input>
-        <div className="targetNow_tx">현재 창</div> <input type="checkbox" id="targetNow" name="target" value="now"></input>
+        <div className="targetNew_tx">새 창</div> <input type="checkbox" id="targetNew" name="target" value="new" checked={isChecked.targetNew} onChange={toggleChange}></input>
+        <div className="targetNow_tx">현재 창</div> <input type="checkbox" id="targetNow" name="target" value="now" checked={isChecked.targetNow} onChange={toggleChange}></input>
         <div className="urlSection"></div>
         <div className="mappingTitle">매핑정보</div>
         <div className="field_tx">필드명</div> <input className="field_input" value={field_input} onChange={handleVal} />

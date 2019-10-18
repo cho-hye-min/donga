@@ -8,7 +8,17 @@
     text-align: left;
     padding-left: 0.5rem;
 }
-
+.templateList .compoSearch{
+    width:189px;
+    height: 31px;
+    margin-top: 1.2rem;
+    margin-left: 3.5rem;
+    margin-bottom: 2rem;
+    border-radius:2rem;
+    border: 1.5px solid #7b7a7a;
+    text-align: left;
+    padding-left: 0.5rem;
+}
 .component_type{
     margin-top: 1.2rem;
     margin-bottom: 1rem;
@@ -34,7 +44,7 @@
     font-weight: 550;
     padding-top: 0.3rem;
 }
-.compoList{
+.compoList, .templateList{
     overflow:auto;
     height:705px;
     width: 317px;
@@ -50,7 +60,23 @@
     color: #bbb8b8;
     font-size: 15px;
 }
+.temp{
+    width: 230px;
+    height: 38px;
+    margin-left: 2.5rem;
+    margin-bottom: 0.7rem;
+    background-color: white;
+    border: 2px solid #bbb8b8;
+    color: #bbb8b8;
+    font-size: 15px;
+}
 .compo:hover{
+    border-color: #909090;
+    color: #20323a;
+    font-weight: 550;
+    background-color: #e0eaec;
+}
+.temp:hover{
     border-color: #909090;
     color: #20323a;
     font-weight: 550;
@@ -81,6 +107,7 @@
     font-weight: 550;
     font-size: 14.5px;
     float:right;
+    list-style: none;
 }
 .temp_tab{
     width: 158px;
@@ -93,6 +120,7 @@
     float: left;
     font-weight: 550;
     font-size: 14.5px;
+    list-style: none;
 }
 .temp_prop{
     width: 160px;
@@ -339,14 +367,14 @@
     margin-top: -1.8rem;
     margin-left: 3.5rem;
 }
-#icon_front{
+#iconFront{
     width: 19px;
     height:20px;
     float: left;
     margin-top:-2.5rem;
     margin-left: 3rem;
 }
-#icon_back{
+#iconBack{
     width: 19px;
     height:20px;
     float: left;
@@ -684,7 +712,7 @@
 .photoPlace_tx{
     width: 60px;
     margin-left: 0.7rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.7rem;
     color: #a09d9d;
     font-weight: 550;
     font-size: 13.5px;
@@ -1486,7 +1514,7 @@
 .regTitle{
     width: 71px;
     margin-left: 0.3rem;
-    margin-top: 3rem;
+    margin-top:11rem;
     margin-bottom: 0.4rem;
     color: #556998;
     font-weight: 550;
@@ -1503,37 +1531,85 @@
 .regDate{
     float:left;
     margin-top: -2.25rem;
-    margin-left: 1.2rem;
+    margin-left: 2.9rem;
     border-radius: 0.3rem;
     border: 1.4px solid #9c7d7d;
     padding: 0.2rem;
 }
 .regNameTx{
     width: 43px;
-    margin-left: 1.2rem;
+    margin-left: 1.15rem;
     margin-top: -0.5rem;
     color: #a09d9d;
     font-weight: 550;
     font-size: 14px;
 }
-.regName_input{
-    float:left;
-    border-bottom: 1px solid #a59292;
+
+.propRegName{
     border-top: none;
-    border-right: none;
     border-left: none;
-    width: 171px;
-    margin-top: -1.3rem;
-    margin-left: 5rem;
-    margin-bottom: 1rem;
+    border-right: none;
+    border-bottom: 1px solid #a59292;
     padding: 0.2rem;
+    width: 162px;
+    float:left;
+    margin-top: -1.23rem;
+    margin-left: 5.7rem;
 }
-.component{
+.composition{
     width: 95px;
     margin-left: 0.2rem;
     margin-top: 3rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.9rem;
     color: #556998;
     font-weight: 550;
     font-size: 14.5px;
 }
+.tx{
+    font-size: 14px;
+    float:left;
+    margin-left: 0.6rem;
+    font-weight: 500;
+    color: #a09d9d;
+}
+.img{
+    font-size: 14px;
+    float:left;
+    margin-left: -9rem;
+    margin-top: 4rem;
+    font-weight: 500;
+    color: #a09d9d;
+}
+.vid{
+    font-size: 14px;
+    float:left;
+    margin-left: -8.9rem;
+    margin-top: 6.5rem;
+    font-weight: 500;
+    color: #a09d9d;
+}
+.txComp{
+    float:left;
+    font-size: 13px;
+    margin-left: -1rem;
+    margin-top: -0.8rem;
+    text-align: left;
+}
+.imgComp{
+    float:left;
+    font-size: 13px;
+    margin-left: -8rem;
+    margin-top: 3.3rem;
+    text-align: left;
+}
+.vidComp{
+    float:left;
+    font-size: 13px;
+    margin-left: -5.3rem;
+    margin-top: 6.45rem;
+    text-align: left;
+}
+.ulTx{
+    margin-bottom:-0.3rem;
+}
+

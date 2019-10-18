@@ -25,7 +25,59 @@ class TemplateEditor_main extends Component{
         e.preventDefault();
     }
 
-    /*handleList = (e) =>{
+   
+
+    handleNewTemplate = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
+    render(){
+        return(
+            <>
+                <div className="title">
+                    <div className="title_main">DONG-A's Editor</div>
+                    <div className="title_template">Template Editor</div>
+                    <div className="title_layout" onClick={this.handleMove}>Layout Editor</div>
+                    <div className="title_package">Package Editor</div>
+                </div>
+
+                <div className="editing_full">
+                    <div className="list">
+                        <div className="list_edit">
+                        <List_tab></List_tab>
+                        </div>
+                        <div id="list_view"></div>
+                    </div>
+                    <div className="editing">
+                        <div className="newPage_back">
+                            <img className="img_newPage" src={newpage} alt={"newpage"} onClick={this.handleNewTemplate}/>
+                            <div id="newPage_section">{this.state.isOpen ? <NewTemplate handleNewTemplate={this.handleNewTemplate}/> : null}</div>
+                        </div>
+                        <div className="button_bk">
+                            <button className="reset" >초기화</button>
+                            <button className="save" >저장</button>
+                        </div>
+                        <div className="arrow_bk">
+                            <img className="img_left" src={left} alt={"left"} />
+                            <img className="img_right" src={right} alt={"right"} />
+                        </div>
+                    </div>
+                    <div className="properties">
+                        <div id="prop_edit"><Prop_tab/></div>
+                        <div id="prop_view"></div>
+                    </div>
+                </div>
+            </>
+
+        );
+    }
+}
+export default TemplateEditor_main;
+
+
+ /*handleList = (e) =>{
             const className = e.target.className;
             switch(className){
                 case "template_tab":
@@ -73,53 +125,3 @@ class TemplateEditor_main extends Component{
                 break;
         }
     }*/
-
-    handleNewTemplate = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
-
-    render(){
-        return(
-            <>
-                <div className="title">
-                    <div className="title_main">DONG-A's Editor</div>
-                    <div className="title_template">Template Editor</div>
-                    <div className="title_layout" onClick={this.handleMove}>Layout Editor</div>
-                    <div className="title_package">Package Editor</div>
-                </div>
-
-                <div className="editing_full">
-                    <div className="list">
-                        <div className="list_edit">
-                        <List_tab></List_tab>
-                        </div>
-                        <div id="list_view"><TemplateList></TemplateList></div>
-                    </div>
-                    <div className="editing">
-                        <div className="newPage_back">
-                            <img className="img_newPage" src={newpage} alt={"newpage"} onClick={this.handleNewTemplate}/>
-                            <div id="newPage_section">{this.state.isOpen ? <NewTemplate handleNewTemplate={this.handleNewTemplate}/> : null}</div>
-                        </div>
-                        <div className="button_bk">
-                            <button className="reset" >초기화</button>
-                            <button className="save" >저장</button>
-                        </div>
-                        <div className="arrow_bk">
-                            <img className="img_left" src={left} alt={"left"} />
-                            <img className="img_right" src={right} alt={"right"} />
-                        </div>
-                    </div>
-                    <div className="properties">
-                        <div id="prop_edit">
-                        <Prop_tab></Prop_tab></div>
-                        <div id="prop_view"></div>
-                    </div>
-                </div>
-            </>
-
-        );
-    }
-}
-export default TemplateEditor_main;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import TemplateEditorMain from './components/TemplateEditorMain.js';
+import TemplateEditorMain from './components/TemplateEditor_main.js';
 
 class App extends Component {
   render() {

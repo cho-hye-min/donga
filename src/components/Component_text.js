@@ -30,10 +30,7 @@ class Component_text extends Component {
                 oth_comp.style.color = '#bbb8b8';
             }
         }
-        /*ReactDOM.render(
-                <Prop info={component}/>,
-            document.getElementById('properties_section')
-        );*/
+        
         const type = 'text';
         Prop(component, type);
     };
@@ -47,7 +44,8 @@ class Component_text extends Component {
         const Id2 = text_data[(text_data.length) - 1].ID;
         const lastId = Id2.substring(1, Id2.length);
 
-        const componentList = text_data.map(component => (<button className="compo" key={component.ID} id={component.ID} onClick={() => this.prop_component(component, firstId, lastId)}> {component.TITLE} ({component.ID}) </button>));
+        const componentList = text_data.map(component => (<button className="compo" key={component.ID} id={component.ID} 
+                              onClick={() => this.prop_component(component, firstId, lastId)}> {component.TITLE} ({component.ID}) </button>));
         return (
             <div className="compoSection">
                 <div className="compoTitle">

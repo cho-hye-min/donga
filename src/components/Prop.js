@@ -6,28 +6,39 @@ import Prop_text from './Prop_text.js';
 import Prop_image from './Prop_image.js';
 import Prop_video from './Prop_video.js';
 import Prop_tab from './Prop_tab.js';
+import TemplateProp from './TemplateProp.js';
 
-const Prop = (component, type) => {
+const Prop = (data, type) => {
 
-    if(type === 'image'){
+    let category = '';
+
+    if (type === 'template') {
         ReactDOM.render(
-            <Prop_image info={component}/>,
+            <TemplateProp info={data} />,
             document.getElementById('prop_view')
         );
-    }else if(type === 'video'){
-        ReactDOM.render(
-            <Prop_video info={component}/>,
-            document.getElementById('prop_view')
-        );
-    }else{
-        ReactDOM.render(
-            <Prop_text info={component}/>,
-            document.getElementById('prop_view')
-            
-        );
-        
-        ReactDOM.render(<Prop_tab type='component'/>, document.getElementById('prop_edit')); 
+        category = 'template';
+    } else {
+        if (type === 'image') {
+            ReactDOM.render(
+                <Prop_image info={data} />,
+                document.getElementById('prop_view')
+            );
+        } else if (type === 'video') {
+            ReactDOM.render(
+                <Prop_video info={data} />,
+                document.getElementById('prop_view')
+            );
+        } else{
+            ReactDOM.render(
+                <Prop_text info={data} />,
+                document.getElementById('prop_view')
+
+            );
+        }
+        category = 'component';
     }
+    ReactDOM.render(<Prop_tab type={category} />, document.getElementById('prop_edit'));
     return (
         <>
         </>
