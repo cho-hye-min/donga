@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import Prop_image from './Prop_image.js';
-import Prop from './Prop.js';
 import Prop_tab from './Prop_tab.js';
+import Test_Component from './Test_Component.js';
 
 const prop_component_img = (component, firstId, lastId) =>{
     const comp = document.getElementById(component.ID);
@@ -30,7 +30,9 @@ const prop_component_img = (component, firstId, lastId) =>{
     // ReactDOM.render(<Prop_image info={component}/>, document.getElementById('properties_section'));
 
     const type = 'image';
-    Prop(component, type);
+    ReactDOM.render(<Prop_tab cate="component" />, document.getElementById('prop_edit'));
+    ReactDOM.render(<Test_Component data={component} info={type}/>, document.getElementById('prop_view'));
+   
 };
 class Component_image extends Component{
     render(){

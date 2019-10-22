@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
+import './TemplateEditor_main.js';
 import Prop_text from './Prop_text.js';
-import Prop from './Prop.js';
 import Prop_tab from './Prop_tab.js';
-
+import Test_Component from './Test_Component.js';
 
 class Component_text extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isComponent: false,
+            component:{},
+            info:''
+        };
+    }
 
     prop_component = (component, firstId, lastId) => {
         const comp = document.getElementById(component.ID);
@@ -32,10 +40,17 @@ class Component_text extends Component {
         }
         
         const type = 'text';
-        Prop(component, type);
+        ReactDOM.render(<Prop_tab cate="component" />, document.getElementById('prop_edit'));
+        ReactDOM.render(<Test_Component data={component} info={type}/>, document.getElementById('prop_view'));
+        
+
+        //const instance = new Test_Component(component);
+        //instance.render(component);
+        
     };
 
     render() {
+        
         const text_data = this.props.text_data;
         const Id = text_data[0].ID;
         const firstId = Id.substring(1, Id.length);

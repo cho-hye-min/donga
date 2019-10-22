@@ -133,6 +133,7 @@
     font-weight: 550;
     font-size: 14.5px;
     float:left;
+    list-style: none;
 }
 .com_prop{
     background-color: #ffe6d5;
@@ -146,6 +147,7 @@
     font-weight: 550;
     font-size: 14.5px;
     float: right;
+    list-style:none;
 }
 .temp_tab:hover, .com_tab:hover, .temp_prop:hover, .com_prop:hover{
     color:#397c96;
@@ -659,6 +661,12 @@
     width:316px;
     height:784px;
     overflow:auto;
+}
+#prop_temp{
+    display:block;
+}
+#prop_comp{
+    display:block;
 }
 .prop_reset{
     width: 59px;

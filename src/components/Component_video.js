@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import Prop_video from './Prop_video.js';
-import Prop from './Prop.js';
+import Prop_tab from './Prop_tab.js';
+import Test_Component from './Test_Component.js';
 
 const prop_component_video = (component, firstId, lastId) =>{
     const comp = document.getElementById(component.ID);
@@ -25,9 +26,11 @@ const prop_component_video = (component, firstId, lastId) =>{
             oth_comp.style.color = '#bbb8b8';
         }
     }
-   //ReactDOM.render(<Prop_video info={component}/>, document.getElementById('properties_section'));
+    
    const type = 'video';
-    Prop(component, type);
+
+   ReactDOM.render(<Prop_tab cate="component" />, document.getElementById('prop_edit'));
+    ReactDOM.render(<Test_Component data={component} info={type}/>, document.getElementById('prop_view'));
 };
 
 class Component_video extends Component{
@@ -53,6 +56,7 @@ class Component_video extends Component{
             <button className="compoAdd" >Componenet Type 추가</button>
             {componentList}
             </div>
+
         </main>
     );
 }

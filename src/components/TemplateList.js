@@ -2,16 +2,13 @@ import React, { Component, createContext } from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import './TemplateEditor_main.js';
+import TemplateEditor_main from './TemplateEditor_main.js';
+import Prop_tab from './Prop_tab.js';
+import Test_Template from './Test_Template.js';
 import TemplateProp from './TemplateProp.js';
-import Prop from './Prop';
 
 class TemplateList extends Component {
   state = {
-    "TemplateInfo":{
-      "Template": {},
-      "FirstId": "",
-      "LastId": ""
-    },
     "DATA": [{
       "ID": "T1",
       "TITLE": "템플릿1",
@@ -142,12 +139,16 @@ class TemplateList extends Component {
       }
     }
 
-    const type = 'template';
-    Prop(template, type);
+    ReactDOM.render(<Prop_tab cate="template" />, document.getElementById('prop_edit'));
+    ReactDOM.render(<TemplateProp info={template} />, document.getElementById('prop_view'));
 
+   // TemplateProp(template);
+   // const instance = new Test_Template(template);
+   // instance.render();
   };
 
   render() {
+
     const templateData = this.state.DATA;
     const Id = templateData[0].ID;
     const firstId = Id.substring(1, Id.length);
@@ -166,7 +167,7 @@ class TemplateList extends Component {
     );
   }
   
+  
 }
-
 
 export default TemplateList;

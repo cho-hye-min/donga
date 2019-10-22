@@ -10,14 +10,14 @@ import TemplateProp from './TemplateProp.js';
 
 const Prop = (data, type) => {
 
-    let category = '';
+    let category = 'template';
 
     if (type === 'template') {
         ReactDOM.render(
             <TemplateProp info={data} />,
             document.getElementById('prop_view')
         );
-        category = 'template';
+        //category = 'template';
     } else {
         if (type === 'image') {
             ReactDOM.render(
@@ -29,7 +29,7 @@ const Prop = (data, type) => {
                 <Prop_video info={data} />,
                 document.getElementById('prop_view')
             );
-        } else{
+        } else if(type === 'text'){
             ReactDOM.render(
                 <Prop_text info={data} />,
                 document.getElementById('prop_view')
@@ -38,6 +38,7 @@ const Prop = (data, type) => {
         }
         category = 'component';
     }
+
     ReactDOM.render(<Prop_tab type={category} />, document.getElementById('prop_edit'));
     return (
         <>

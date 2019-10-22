@@ -19,13 +19,11 @@ class TemplateEditor_main extends Component{
         //active_prop: false,
         isOpen: false
     };
-
     
     handleMove = e => {
         e.preventDefault();
     }
 
-   
 
     handleNewTemplate = () => {
         this.setState({
@@ -45,9 +43,7 @@ class TemplateEditor_main extends Component{
 
                 <div className="editing_full">
                     <div className="list">
-                        <div className="list_edit">
-                        <List_tab></List_tab>
-                        </div>
+                        <div className="list_edit"><List_tab/></div>
                         <div id="list_view"></div>
                     </div>
                     <div className="editing">

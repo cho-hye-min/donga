@@ -4,31 +4,56 @@ import ReactDOM from 'react-dom';
 import './TemplateEditor_main.css';
 import './TemplateEditor.css';
 import TemplateEditor_main from './TemplateEditor_main.js';
-import TemplateProp from './TemplateProp.js';
-import Prop from './Prop.js';
+import Test_Component from './Test_Component.js';
+import Test_Template from './Test_Template.js';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import TemplateProp from './TemplateProp.js';
 
 class Prop_tab extends Component {
-    constructor(props){
-        super(props);
-        this.state={
+    state={
             active_prop: false
-        };
-    }
+    };
+
+    CustomTempTab = ({ children }) => (
+        <Tab className={this.state.active_prop ? 'temp_prop' : 'template_prop'}
+        onClick={this.handleProp}>
+            {children}
+        </Tab>
+    );
+
+    CustomCompoTab = ({ children }) => (
+        <Tab className={this.state.active_prop ? 'com_prop' : 'component_prop'}
+        onClick={this.handleProp}>
+            {children}
+        </Tab>
+    );
+
+    /*CustomTempTabPanel = ({children}) => (
+        <TabPanel id="prop_temp"  forceRender={true} >
+            {children}
+        </TabPanel>
+    );
+
+    CustomcompoTabPanel = ({children}) => (
+        <TabPanel id="prop_comp"  forceRender={true} >
+            {children}
+        </TabPanel>
+    );*/
+
 
     componentWillMount (){
-        if (this.props.type === 'component') {
+        if (this.props.cate === 'component') {
             this.setState({ active_prop: true });
-        }else if(this.props.type === 'template'){
+        }else if(this.props.cate === 'template'){
             this.setState({ active_prop: false });
         }
     };
 
     componentWillReceiveProps(nextProps){
-        if (nextProps.type === 'component') {
+        if (nextProps.cate === 'component') {
             this.setState({ active_prop: true });
-        }else if(nextProps.type  === 'template'){
+        }else if(nextProps.cate  === 'template'){
             this.setState({ active_prop: false });
         }
     }
@@ -54,18 +79,34 @@ class Prop_tab extends Component {
                     this.setState({ active_prop: !currentState2 });
                 }
                 break;
-            default:
-                break;
         }
     };
 
     render() {
+        this.CustomTempTab.tabsRole = 'Tab';
+        this.CustomCompoTab.tabsRole = 'Tab';
+
+       // this.CustomTempTabPanel.tabsRole = 'TabPanel';
+       // this.CustomcompoTabPanel.tabsRole = 'TabPanel';
+
+        const tabListStyle = {
+            borderBottom: 0,
+            marginBottom: "0px"
+        }
         return (
             <>
-               <div className={this.state.active_prop ? 'temp_prop' : 'template_prop'}
-                    onClick={this.handleProp}>Template 속성</div>
-                <div className={this.state.active_prop ? 'com_prop' : 'component_prop'}
-                    onClick={this.handleProp}>Component 속성</div>
+                <Tabs>
+                    <TabList style={tabListStyle}>
+                        <this.CustomTempTab>Template 속성</this.CustomTempTab>
+                        <this.CustomCompoTab>Component 속성</this.CustomCompoTab>
+                    </TabList>
+                    < TabPanel >
+                        <Test_Template info='empty' />
+                    </ TabPanel>
+                    < TabPanel>
+                        <Test_Component info='empty'/>
+                    </ TabPanel>
+                </Tabs>
             </>
         );
     }
