@@ -11,6 +11,7 @@ import justifyArray from '../img/justify.png';
 import BorderPop from './BorderPop.js';
 import PaddingPop from './PaddingPop.js';
 import MarginPop from './MarginPop.js';
+import ColorPop from './ColorPop.js';
 import FileInfoPop_image from './FileInfoPop_image.js';
 
 const Prop_image = (component) => {
@@ -18,7 +19,17 @@ const Prop_image = (component) => {
 
   const id = component.info.ID;
   const attr = component.info.ATTRIBUTE;
-  
+
+  const [isIcon, setIcon] = useState({
+    iconFront: false,
+    iconBack: false
+});
+
+const [isTarget, setTarget] = useState({
+    targetNew: false,
+    targetNow: false
+});
+
   const [isChecked, setChecked] = useState({
     iconFront: true,
     iconBack: false,
@@ -26,17 +37,12 @@ const Prop_image = (component) => {
     targetNow:false
   });
 
-  const toggleChange = (e) => {
-    const id = e.target.id;
-    const checked = isChecked.id;
-    setChecked({ id : !checked});
-  }
-
   const [showPop, setShowPop] = useState({
     borderPop: false,
     paddingPop: false,
     marginPop: false,
-    fileInfoPop: false
+    fileInfoPop: false,
+    colorPop: false
   });
 
   const [valEdit, setValue] = useState({
@@ -51,7 +57,9 @@ const Prop_image = (component) => {
   });
 
   const { propName, prop_width, prop_height, size_input, line_height_input, url_input, field_input, photoPlace } = valEdit;
-  const { borderPop, paddingPop, marginPop, fileInfoPop } = showPop;
+  const { borderPop, paddingPop, marginPop, fileInfoPop, colorPop } = showPop;
+  const { iconFront, iconBack } = isIcon;
+  const { targetNew, targetNow } = isTarget;
 
   const handleVal = (e) => {
 
@@ -62,6 +70,47 @@ const Prop_image = (component) => {
 
     setValue(newVal);
 
+  };
+
+  const toggleChange = (e) => {
+    const id = e.target.id;
+    let nextChk ={};
+    
+    switch (id) {
+      case 'iconFront':
+          nextChk = {
+          ...isIcon,
+          iconFront: !iconFront,
+          iconBack: !iconBack
+        };
+        setIcon(nextChk);
+        break;
+      case 'iconBack':
+          nextChk = {
+          ...isIcon,
+          iconBack: !iconBack,
+          iconFront: !iconFront
+        };
+        setIcon(nextChk);
+        break;
+      case 'targetNew':
+          nextChk = {
+          ...isTarget,
+          targetNew: !targetNew,
+          targetNow: !targetNow
+        };
+        setTarget(nextChk);
+        break;
+      case 'targetNow':
+          nextChk = {
+          ...isTarget,
+          targetNow: !targetNow,
+          targetNew: !targetNew
+        };
+        setTarget(nextChk);
+        break;
+      default: break;
+    }
   };
 
   const handleOnClick = data => {
@@ -95,6 +144,13 @@ const Prop_image = (component) => {
         };
         setShowPop(nextPop);
         break;
+      case 'colorPop':
+        nextPop = {
+          ...showPop,
+          colorPop: !colorPop
+        };
+        setShowPop(nextPop);
+        break;
       default: break;
     }
   };
@@ -103,6 +159,7 @@ const Prop_image = (component) => {
   const stylePaddingPop = paddingPop ? {} : { display: 'none' };
   const styleMarginPop = marginPop ? {} : { display: 'none' };
   const styleFileInfoPop = fileInfoPop ? {} : { display: 'none' };
+  const styleColorPop = colorPop ? {} : { display: 'none' };
 
   useEffect(() => {
     setValue({
@@ -120,8 +177,49 @@ const Prop_image = (component) => {
       borderPop: false,
       paddingPop: false,
       marginPop: false,
-      fileInfoPop: false
+      fileInfoPop: false,
+      colorPop: false
     });
+
+    let nextChk ={};
+    let location = attr.ICON.LOCATION;
+    switch (location) {
+      case 'front':
+        nextChk = {
+          iconFront: true,
+          iconBack: false
+        };
+        setIcon(nextChk);
+        break;
+      case 'back':
+        nextChk = {
+          iconBack: true,
+          iconFront: false
+        };
+        setIcon(nextChk);
+        break;
+      default: break;
+    }
+
+
+    let target = attr.LINK.TARGET;
+    switch (target) {
+      case '_blank':
+        nextChk = {
+          targetNew : true,
+          targetNow : false
+        };
+        setTarget(nextChk);
+        break;
+      case '_now':
+        nextChk = {
+          targetNow: true,
+          targetNew : false
+        };
+        setTarget(nextChk);
+        break;
+      default: break;
+    }
 
   }, [id]);
 
@@ -144,14 +242,18 @@ const Prop_image = (component) => {
         <div id="margin_section"style={styleMarginPop}>
           <MarginPop marginInfo={attr.BOX.MARGIN} title={propName}/>
         </div>
-        <div className="backgroundTitle">background-color</div>
-        <div id="background_section"></div>
+        <div className="backgroundTitle">background-color</div> <img className="color_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('colorPop')} />
+        <div id="background_section" style={styleColorPop}>
+          <ColorPop/>
+        </div>
+        <div className="arrayBox">
         <div className="arrayTitle">정렬</div>
         <img id="img_left_array" src={leftArray} alt={"leftArray"} />
         <img id="img_center_array" src={centerArray} alt={"centerArray"} />
         <img id="img_right_array" src={rightArray} alt={"rightArray"} />
         <img id="img_justify_array" src={justifyArray} alt={"justifyArray"} />
         <div className="arraySection"></div>
+        </div>
         <div className="iconTitle">Icon</div>
         <select className="iconSection" defaultValue={attr.ICON.TYPE}>
           <option value="none">none</option>
@@ -160,8 +262,8 @@ const Prop_image = (component) => {
           <option value="facebook">facebook</option>
           <option value="push_news">push news</option>
         </select>
-        <input type="checkbox" id="iconFront" name="icon" value="front" checked={isChecked.iconFront} onChange={toggleChange}></input> <div className="front_tx">앞</div>
-        <div className="back_tx">뒤</div> <input type="checkbox" id="iconBack" name="icon" value="back" checked={isChecked.iconBack} onChange={toggleChange}></input>
+        <input type="checkbox" id="iconFront" name="icon" value="front" checked={isIcon.iconFront} onChange={toggleChange}></input> <div className="front_tx">앞</div>
+        <div className="back_tx">뒤</div> <input type="checkbox" id="iconBack" name="icon" value="back" checked={isIcon.iconBack} onChange={toggleChange}></input>
         <div className="fontTitle">Font</div>
         <div className="size">size</div><input className="size_input" value={size_input} onChange={handleVal} /><div className="size_px">px</div>
         <div className="line_height">line height</div><input className="line_height_input" value={line_height_input} onChange={handleVal} /><div className="line_height_px">px</div>
@@ -185,8 +287,8 @@ const Prop_image = (component) => {
         <div className="linkTitle">Link</div>
         <div className="url_tx">URL</div> <input className="url_input" value={url_input} onChange={handleVal} />
         <div className="target_tx">Target</div>
-        <div className="targetNew_tx">새 창</div> <input type="checkbox" id="targetNew" name="target" value="new" checked={isChecked.targetNew} onChange={toggleChange}></input>
-        <div className="targetNow_tx">현재 창</div> <input type="checkbox" id="targetNow" name="target" value="now" checked={isChecked.targetNow} onChange={toggleChange}></input>
+        <div className="targetNew_tx">새 창</div> <input type="checkbox" id="targetNew" name="target" value="new" checked={isTarget.targetNew} onChange={toggleChange}></input>
+        <div className="targetNow_tx">현재 창</div> <input type="checkbox" id="targetNow" name="target" value="now" checked={isTarget.targetNow} onChange={toggleChange}></input>
         <div className="urlSection"></div>
         <div className="mappingTitle">매핑정보</div>
         <div className="field_tx">필드명</div> <input className="field_input" value={field_input} onChange={handleVal} />
@@ -196,7 +298,7 @@ const Prop_image = (component) => {
         <div className="photoPlace_tx">촬영장소</div>
         <input className="photoPlace" value={photoPlace} onChange={handleVal} />
         <div className="fileInfoTitle">파일정보</div> <img id="img_down_file" src={downArrow} alt={"down"} onClick={() => handleOnClick('fileInfoPop')}  />
-        <div id="fileInfo_section"style={styleMarginPop}>
+        <div id="fileInfo_section"style={styleFileInfoPop}>
           <FileInfoPop_image fileInfo={attr.FILEINFO} title={propName}/>
         </div>
         <div className="markTitle">워터마크</div> <input type="checkbox" id="mark" name="mark" value="mark"></input>

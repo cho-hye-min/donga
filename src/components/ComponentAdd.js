@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
-import './TemplateEditor_main.css';
+import ComponentList from './ComponentList.js';
 import Component_text from './Component_text.js';
 import Component_image from './Component_image.js';
 import Component_video from './Component_video.js';
+import AddingTx from './AddingTx.js';
+import AddingImg from './AddingImg.js';
 
 
-class ComponentList extends Component {
+class ComponentAdd extends Component {
   state = {
-    popEdit:false,
-    popType:'',
     "TEXT": [{
       "ID": "C1",
       "TITLE": "제목",
@@ -23,13 +23,13 @@ class ComponentList extends Component {
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
           },
-          "PADDING":{
+          "PADDING": {
             "PADDINGTOP": 0,
             "PADDINGRIGHT": 0,
             "PADDINGBOTTOM": 0,
             "PADDINGLEFT": 0,
           },
-          "MARGIN":{
+          "MARGIN": {
             "MARGINTOP": 0,
             "MARGINRIGHT": 30,
             "MARGINBOTTOM": 0,
@@ -67,7 +67,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 550,
           "HEIGHT": 40,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -115,7 +115,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 550,
           "HEIGHT": 40,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -163,7 +163,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 550,
           "HEIGHT": 80,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -211,7 +211,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 600,
           "HEIGHT": 800,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -260,7 +260,7 @@ class ComponentList extends Component {
           "WIDTH": 500,
           "HEIGHT": 60,
 
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -309,7 +309,7 @@ class ComponentList extends Component {
           "WIDTH": 200,
           "HEIGHT": 30,
 
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -358,7 +358,7 @@ class ComponentList extends Component {
           "WIDTH": 500,
           "HEIGHT": 40,
 
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -406,7 +406,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 500,
           "HEIGHT": 61,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 1,
             "BORDERSTYLE": "solid",
             "BORDERCOLOR": "#f2f3f5"
@@ -454,7 +454,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -503,7 +503,7 @@ class ComponentList extends Component {
           "WIDTH": 200,
           "HEIGHT": 30,
 
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -551,7 +551,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 1,
             "BORDERSTYLE": "",
             "BORDERCOLOR": "#4762ae"
@@ -599,7 +599,7 @@ class ComponentList extends Component {
         "BOX": {
           "WIDTH": 200,
           "HEIGHT": 30,
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 1,
             "BORDERSTYLE": "",
             "BORDERCOLOR": "#4762ae"
@@ -649,7 +649,7 @@ class ComponentList extends Component {
           "WIDTH": 180,
           "HEIGHT": 120,
 
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -713,7 +713,7 @@ class ComponentList extends Component {
           "WIDTH": 840,
           "HEIGHT": 470,
 
-          "BORDER":{
+          "BORDER": {
             "BORDERWIDTH": 0,
             "BORDERSTYLE": "",
             "BORDERCOLOR": ""
@@ -769,92 +769,58 @@ class ComponentList extends Component {
       }
     }
     ]
-  }
-
-  //메소드 작성 (컴포넌트 유형 선택)
-handleComponentSel = (e) => {
-  const val = e.target.value;
-  if(e.target.className === 'pop_component_type'){
-    this.setState({popEdit:true});
-    this.setState({popType:val});
-  }else{
-    switch (val) {
-      case "text":
-        ReactDOM.render(<Component_text text_data={this.state.TEXT}/>, document.getElementById('component_list'));
-        break;
-      case "image":
-        ReactDOM.render(<Component_image image_data={this.state.IMAGE}/>, document.getElementById('component_list'));
-        break;
-      case "video":
-        ReactDOM.render(<Component_video video_data={this.state.VIDEO}/>, document.getElementById('component_list'));
-        break;
-      default:
-        break;
-    }
-  }
-}
+  };
 
   render() {
-    let editType ='';
-    let isText = true;
-    let isImage = false;
-    let isVideo = false;
-    let isPop = false;
-    let addInfo = {};
+    const addInfo = this.props.addInfo;
+    //axio data 호출 (임시로 state)
+    let stateData = [];
+    let compoData = [];
+    let compoId = '';
+    let compoInfo = {};
+    let attribute = {};
+    let isText = false;
+    let isImage = false; 
+    let isVideo = false; 
 
-    //main화면에서 component Type 추가 버튼을 통해 component 편집 dialog open
-    if(this.props.addInfo !== undefined && this.state.popEdit === false){
-      isPop = true;
-      addInfo = this.props.addInfo;
-      editType = addInfo.compoType;
+    if (addInfo.compoType === 'text') {
+      stateData = this.state.TEXT;
+      compoData = stateData.filter(id => id.TITLE === addInfo.compoCate);
+      isText = true;
 
-      if(addInfo.compoType === 'image'){
-        isText = false;
-        isImage = true;
-        isVideo = false;
-      }else if(addInfo.compoType === 'video'){
-        isText = false;
-        isImage = false;
-        isVideo = true;
-      }
+    } else if (addInfo.compoType === 'image') {
+      stateData = this.state.IMAGE;
+      compoData = stateData.filter(id => id.TITLE === addInfo.compoCate);
+      isImage = true;
+
+    } else if (addInfo.compoType === 'video') {
+      stateData = this.state.VIDEO;
+      compoData = stateData.filter(id => id.TITLE === addInfo.compoCate);
+      isVideo = true;
     }
-
-    //component 편집 dialog 내에서 type 선택
-    if(this.state.popEdit === true){
-      isPop = true;
-      const popType = this.state.popType;
-      editType = popType;
-
-      if(popType === 'text'){
-        isText = true;
-        isImage = false;
-        isVideo = false;
-      }else if(popType === 'image'){
-        isText = false;
-        isImage = true;
-        isVideo = false;
-      }else if(popType === 'video'){
-        isText = false;
-        isImage = false;
-        isVideo = true;
-      }
-    }
-
+ 
     return (
-      <>
-        <select className={isPop ? "pop_component_type" : "component_type"} defaultValue={editType} onChange={this.handleComponentSel}>
-          <option value="text">Text</option>
-          <option value="image">Image</option>
-          <option value="video">Video</option>
-        </select>
-        <div id="component_list">
-          {isText ? <Component_text text_data={this.state.TEXT} isPop={isPop} addInfo={addInfo}/> : null}
-          {isImage ? <Component_image image_data={this.state.IMAGE} isPop={isPop} addInfo={addInfo} /> : null}
-          {isVideo ? <Component_video video_data={this.state.VIDEO} isPop={isPop} addInfo={addInfo}/> : null}
+      <React.Fragment>
+        <div className="Modal-overlay" />
+        <div className="componentAddBox">
+          <div className="componentAddTitle">Component 편집
+                    <button className="componentAdd_cancle" onClick={this.props.call}>X</button>
+          </div>
+          <div className="listSection">
+            <div className="component_tab">Component</div>
+            <ComponentList addInfo={addInfo} />
+          </div>
+          <div className="componentAdding" id="componentAdding">
+            {isText ? <AddingTx addInfo={addInfo} data={compoData[0]} /> : null}
+            {isImage ? <AddingImg addInfo={addInfo} data={compoData[0]} /> : null}
+            {isVideo ? <AddingImg addInfo={addInfo} data={compoData[0]} /> : null}
+
+          </div>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }
 
-export default ComponentList;
+
+export default ComponentAdd;

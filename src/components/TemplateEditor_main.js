@@ -15,8 +15,6 @@ import { AST_False } from 'terser';
 
 class TemplateEditor_main extends Component{
     state = {
-        //active_list: false,
-        //active_prop: false,
         isOpen: false
     };
     
@@ -51,6 +49,7 @@ class TemplateEditor_main extends Component{
                             <img className="img_newPage" src={newpage} alt={"newpage"} onClick={this.handleNewTemplate}/>
                             <div id="newPage_section">{this.state.isOpen ? <NewTemplate handleNewTemplate={this.handleNewTemplate}/> : null}</div>
                         </div>
+                        <div id="compoAddPage"></div>
                         <div className="button_bk">
                             <button className="reset" >초기화</button>
                             <button className="save" >저장</button>
