@@ -4,7 +4,7 @@ import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import './TemplateEditor.css';
 import Prop_image from './Prop_image.js';
 import Prop_tab from './Prop_tab.js';
-import Test_Component from './Test_Component.js';
+import Test_Component from './PropertyComponent.js/index.js';
 import ComponentAddPop from './ComponentAddPop.js';
 import ComponentAdd from './ComponentAdd.js';
 import AddingImg from './AddingImg.js';
