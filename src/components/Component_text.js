@@ -5,7 +5,7 @@ import './TemplateEditor.css';
 import './TemplateEditor_main.js';
 import Prop_text from './Prop_text.js';
 import Prop_tab from './Prop_tab.js';
-import Test_Component from './PropertyComponent.js/index.js';
+import Test_Component from './Test_Component.js';
 import ComponentAddPop from './ComponentAddPop.js';
 import ComponentAdd from './ComponentAdd.js';
 import AddingTx from './AddingTx.js';
