@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './TemplateEditor.css';
 
-
+//template 생성
 class NewTemplate extends Component {
     render() {
         return (

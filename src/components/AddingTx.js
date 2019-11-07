@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useForceUpdate from 'use-force-update';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import downArrow from '../img/arrow-down-sign-to-navigate.png';
@@ -11,13 +12,20 @@ import PaddingPop from './PaddingPop.js';
 import MarginPop from './MarginPop.js';
 import ApplyPop from './ApplyPop.js';
 import ColorPop from './ColorPop.js';
+import AddingTx from './AddingTx.js';
+import './ComponentAdd.js';
 
+//Component Editor dialog
+//Component Text 속성 view
 const Adding = (info) => {
-  const compoName = info.addInfo.compoName;
-  const compoType = info.addInfo.compoType;
-  const compoCate = info.addInfo.compoCate;
+  const compoName = info.addInfo.name;
+  const compoType = info.addInfo.type;
+  const compoCate = info.addInfo.cate;
   const compoId = info.data.ID;
   const attribute = info.data.ATTRIBUTE;
+
+  const [isCreate, setCreate] = useState(info.isCreate);
+  const [isReset, setReset] = useState(false);
 
 
   const [isIcon, setIcon] = useState({
@@ -30,9 +38,7 @@ const Adding = (info) => {
     targetNow: false
   });
 
-  const [isIconUse, setIconUse] = useState({
-    iconUse : false,
-  });
+  const [isIconUse, setIconUse] = useState(false);
 
   const [showPop, setShowPop] = useState({
     borderPop: false,
@@ -49,15 +55,19 @@ const Adding = (info) => {
     size_input: attribute.FONT.FONTSIZE,
     line_height_input: attribute.FONT.LINEHEIGHT,
     url_input: attribute.LINK.URL,
-    field_input: attribute.MAPPING.FIELD
+    field_input: attribute.MAPPING.FIELD,
+    font_weight: attribute.FONT.FONTWEIGHT,
+    font_family: attribute.FONT.FONTFAMILY,
+    font_style: attribute.FONT.FONTSTYLE
   });
 
 
-  const { Name, prop_width, prop_height, size_input, line_height_input, url_input, field_input } = valEdit;
+  const { Name, prop_width, prop_height, size_input, line_height_input, url_input, field_input, font_weight, font_family, font_style } = valEdit;
   const { borderPop, paddingPop, marginPop, applyPop, colorPop } = showPop;
   const { iconFront, iconBack } = isIcon;
   const { targetNew, targetNow } = isTarget;
 
+  //input text 관리
   const handleVal = (e) => {
     const newVal = {
       ...valEdit,
@@ -67,13 +77,14 @@ const Adding = (info) => {
     setValue(newVal);
   };
 
+  //check box 관리
   const toggleChange = (e) => {
     const id = e.target.id;
-    let nextChk ={};
-    
+    let nextChk = {};
+
     switch (id) {
       case 'iconFront':
-          nextChk = {
+        nextChk = {
           ...isIcon,
           iconFront: !iconFront,
           iconBack: !iconBack
@@ -81,7 +92,7 @@ const Adding = (info) => {
         setIcon(nextChk);
         break;
       case 'iconBack':
-          nextChk = {
+        nextChk = {
           ...isIcon,
           iconBack: !iconBack,
           iconFront: !iconFront
@@ -89,7 +100,7 @@ const Adding = (info) => {
         setIcon(nextChk);
         break;
       case 'targetNew':
-          nextChk = {
+        nextChk = {
           ...isTarget,
           targetNew: !targetNew,
           targetNow: !targetNow
@@ -97,17 +108,21 @@ const Adding = (info) => {
         setTarget(nextChk);
         break;
       case 'targetNow':
-          nextChk = {
+        nextChk = {
           ...isTarget,
           targetNow: !targetNow,
           targetNew: !targetNew
         };
         setTarget(nextChk);
         break;
+      case 'iconUse':
+        setIconUse(!isIconUse);
+        break;
       default: break;
     }
   };
 
+  //border, padding, margin, apply, color pop -> show/hide 관리
   const handleOnClick = data => {
     let nextPop = {};
     switch (data) {
@@ -156,11 +171,110 @@ const Adding = (info) => {
   const styleApplyPop = applyPop ? {} : { display: 'none' };
   const styleColorPop = colorPop ? {} : { display: 'none' };
 
+  //초기화
+  const handleReset = () => {
+    if (isCreate === 'copy' || isCreate === 'create') {
+      setValue({
+        Name: '',
+        prop_width: 0,
+        prop_height: 0,
+        size_input: 0,
+        line_height_input: 0,
+        url_input: '',
+        field_input: '',
+        font_weight: 'normal',
+        font_family: '돋음',
+        font_style: 'normal'
+      });
+
+      let nextChk = {};
+
+      nextChk = {
+        iconFront: true,
+        iconBack: false
+      };
+      setIcon(nextChk);
+
+      nextChk = {
+        targetNew: true,
+        targetNow: false
+      };
+      setTarget(nextChk);
+
+    } else {
+      setValue({
+        Name: compoName,
+        prop_width: attribute.BOX.WIDTH,
+        prop_height: attribute.BOX.HEIGHT,
+        size_input: attribute.FONT.FONTSIZE,
+        line_height_input: attribute.FONT.LINEHEIGHT,
+        url_input: attribute.LINK.URL,
+        field_input: attribute.MAPPING.FIELD,
+        font_weight: attribute.FONT.FONTWEIGHT,
+        font_family: attribute.FONT.FONTFAMILY,
+        font_style: attribute.FONT.FONTSTYLE
+      });
+
+      let nextChk = {};
+      let location = attribute.ICON.LOCATION;
+      switch (location) {
+        case 'front':
+          nextChk = {
+            iconFront: true,
+            iconBack: false
+          };
+          setIcon(nextChk);
+          break;
+        case 'back':
+          nextChk = {
+            iconBack: true,
+            iconFront: false
+          };
+          setIcon(nextChk);
+          break;
+        default: break;
+      }
+
+      let target = attribute.LINK.TARGET;
+      switch (target) {
+        case '_blank':
+          nextChk = {
+            targetNew: true,
+            targetNow: false
+          };
+          setTarget(nextChk);
+          break;
+        case '_now':
+          nextChk = {
+            targetNow: true,
+            targetNew: false
+          };
+          setTarget(nextChk);
+          break;
+        default: break;
+      }
+    }
+
+    setShowPop({
+      borderPop: false,
+      paddingPop: false,
+      marginPop: false,
+      fileInfoPop: false,
+      applyPop: false,
+      colorPop: false
+    });
+
+    //추후 attribute에 field와 data 추가해야함!
+    setIconUse(false);
+    setReset(true);
+  };
 
   const handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    const newVal = {
+      ...valEdit,
+      [e.target.id]: e.target.value
+    };
+    setValue(newVal);
   };
 
   useEffect(() => {
@@ -171,7 +285,10 @@ const Adding = (info) => {
       size_input: attribute.FONT.FONTSIZE,
       line_height_input: attribute.FONT.LINEHEIGHT,
       url_input: attribute.LINK.URL,
-      field_input: attribute.MAPPING.FIELD
+      field_input: attribute.MAPPING.FIELD,
+      font_weight: attribute.FONT.FONTWEIGHT,
+      font_family: attribute.FONT.FONTFAMILY,
+      font_style: attribute.FONT.FONTSTYLE
     });
 
     setShowPop({
@@ -182,7 +299,7 @@ const Adding = (info) => {
       colorPop: false
     });
 
-    let nextChk ={};
+    let nextChk = {};
     let location = attribute.ICON.LOCATION;
     switch (location) {
       case 'front':
@@ -207,21 +324,30 @@ const Adding = (info) => {
     switch (target) {
       case '_blank':
         nextChk = {
-          targetNew : true,
-          targetNow : false
+          targetNew: true,
+          targetNow: false
         };
         setTarget(nextChk);
         break;
       case '_now':
         nextChk = {
           targetNow: true,
-          targetNew : false
+          targetNew: false
         };
         setTarget(nextChk);
         break;
       default: break;
     }
+
+    //추후 attribute에 field와 data 추가해야함!
+    setIconUse(false);
+    setCreate(info.isCreate);
+
   }, [compoCate]);
+
+  useEffect(() => {
+    setReset(false);
+  });
 
   return (
     <div className="AddingDiv">
@@ -229,7 +355,7 @@ const Adding = (info) => {
       <div className="Apply">아래 속성의 일부를 템플릿에 적용</div> <img className="applyPop" src={downArrow} alt={"down"} />
       <div className="useSection">
         <div className="CompoUse">사용</div>
-        <input type="checkbox" id="iconUse" name="iconUse" onChange={toggleChange} checked={isIconUse.iconUse}></input>
+        <input type="checkbox" id="iconUse" name="iconUse" onChange={toggleChange} checked={isIconUse}></input>
         <label for="iconUse"></label>
       </div>
       <div className="Add_property_section">
@@ -239,22 +365,22 @@ const Adding = (info) => {
           <input className="Name" name="Name" value={Name} onChange={handleVal} />
           <div className="default">Component 속성 고정</div> <img className="default_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('applyPop')} />
           <div className="ApplyPop" style={styleApplyPop}>
-            <ApplyPop />
+            <ApplyPop isReset={isReset} isCreate={isCreate}/>
           </div>
           <div className="boxTitle">Box</div>
           <div className="prop_width_tx">width</div> <input className="prop_width" value={prop_width} onChange={handleVal} /><div className="prop_width_px">px</div>
           <div className="prop_height_tx">height</div> <input className="prop_height" value={prop_height} onChange={handleVal} /><div className="prop_height_px">px</div>
           <div className="borderTitle">border</div> <img className="border_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('borderPop')} />
           <div id="border_section" style={styleBorderPop}>
-            <BorderPop borderInfo={attribute.BOX.BORDER} title={compoCate} />
+            <BorderPop borderInfo={attribute.BOX.BORDER} title={compoCate} isReset={isReset} isCreate={isCreate}/>
           </div>
           <div className="paddingTitle">padding</div> <img className="padding_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('paddingPop')} />
           <div id="padding_section" style={stylePaddingPop}>
-            <PaddingPop paddingInfo={attribute.BOX.PADDING} title={compoCate} />
+            <PaddingPop paddingInfo={attribute.BOX.PADDING} title={compoCate} isReset={isReset} isCreate={isCreate}/>
           </div>
           <div className="marginTitle">margin</div> <img className="margin_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('marginPop')} />
           <div id="margin_section" style={styleMarginPop}>
-            <MarginPop marginInfo={attribute.BOX.MARGIN} title={compoCate} />
+            <MarginPop marginInfo={attribute.BOX.MARGIN} title={compoCate} isReset={isReset} isCreate={isCreate}/>
           </div>
           <div className="backgroundTitle">background-color</div> <img className="color_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('colorPop')} />
           <div id="background_section" style={styleColorPop}>
@@ -283,18 +409,18 @@ const Adding = (info) => {
           <div className="fontTitle">Font</div>
           <div className="size">size</div><input className="size_input" value={size_input} onChange={handleVal} /><div className="size_px">px</div>
           <div className="line_height">line height</div><input className="line_height_input" value={line_height_input} onChange={handleVal} /><div className="line_height_px">px</div>
-          <div className="weight">weight</div><select className="weightSection" defaultValue={attribute.FONT.FONTWEIGHT}>
+          <div className="weight">weight</div><select id="font_weight" className="weightSection" value={font_weight} onChange={handleChange}>
             <option value="normal">normal</option>
             <option value="lighter">lighter</option>
             <option value="bold">bold</option>
           </select>
-          <div className="family">family</div>  <select className="familySection" defaultValue={attribute.FONT.FONTFAMILY}>
+          <div className="family">family</div>  <select id="font_family" className="familySection" value={font_family} onChange={handleChange}>
             <option value="돋음">돋음</option>
             <option value="궁서">궁서</option>
             <option value="굴림">굴림</option>
             <option value="맑음고딕">맑음고딕</option>
           </select>
-          <div className="style">style</div> <select className="styleSection" defaultValue={attribute.FONT.FONTSTYLE}>
+          <div className="style">style</div> <select id="font_style" className="styleSection" value={font_style} onChange={handleChange}>
             <option value="normal">normal</option>
             <option value="italic">italic</option>
             <option value="oblique">oblique</option></select>
@@ -310,7 +436,7 @@ const Adding = (info) => {
         </div>
       </div>
       <div className="prop_button">
-        <button className="prop_reset" >초기화</button>
+        <button className="prop_reset" onClick={handleReset}>초기화</button>
         <button className="prop_delete" >삭제</button>
         <button className="prop_save" >저장</button>
       </div>

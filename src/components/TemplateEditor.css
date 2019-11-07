@@ -691,17 +691,7 @@
     margin-left: 5.5rem;
     margin-top: 0.2rem;
 }
-.prop_delete{
-    width: 59px;
-    height: 25px;
-    background-color: transparent;
-    border-color: #4c7b69;
-    font-size: 13px;
-    float:left;
-    border: 1px solid #5d4a4a;
-    margin-left: 5.5rem;
-    margin-top: 0.2rem;
-}
+
 .prop_save{
     width: 59px;
     height: 25px;
@@ -710,7 +700,7 @@
     font-size:13px;
     border: 1px solid #5d4a4a;
     margin-top: 0.2rem;
-    margin-left: -5rem;
+    margin-left: -6rem;
 }
 
 .photoInfoTitle{
@@ -1281,6 +1271,9 @@
     border: 1px solid white;
     border-radius: 9px;
 }
+.Add_property_section .pop_file_video{
+    border:none;
+}
 .pop_file_video_name{
     width:87px;
     float:left;
@@ -1422,7 +1415,36 @@
     height: 39px;
     border-radius: 3px;
 }
+.Add_property_section .pop_file_video_name_input,
+.Add_property_section .pop_file_video_path_input,
+.Add_property_section .pop_file_video_format_input,
+.Add_property_section .pop_file_video_size_input,
+.Add_property_section .pop_file_video_resolution_input,
+.Add_property_section .pop_file_video_playtime_input,
+.Add_property_section .pop_file_video_headImage_input,
+.Add_property_section .pop_file_video_description_tx{
+    background-color: #eaeaea;
+}
+.Add_property_section .pop_file_video_name,
+.Add_property_section .pop_file_video_path,
+.Add_property_section .pop_file_video_format,
+.Add_property_section .pop_file_video_size,
+.Add_property_section .pop_file_video_resolution,
+.Add_property_section .pop_file_video_playtime,
+.Add_property_section .pop_file_video_headImage,
+.Add_property_section .pop_file_video_description{
+    color:#4f647d;
+}
 
+.Add_property_section .pop_file_video_name,
+.Add_property_section .pop_file_video_playtime
+{
+    margin-left: 1rem;
+}
+.Add_property_section .pop_file_video_headImage
+{
+    margin-left: 1.6rem;
+}
 .Modal-overlay{
     position: fixed;
     top: 0;
@@ -1808,10 +1830,12 @@
 
 .AddTitle{
     margin-top: 0.2rem;
-    margin-right:5rem;
     font-size: 19px;
     font-weight: 550;
     color: #68696b;
+    width:692px;
+    height: 33px;
+    text-align:center;
 }
 .NameTitle{
     width: 126px;
@@ -1998,17 +2022,16 @@
 }
 .ArrayRight{
     float:right;
-    margin-top: -32rem;
     width:50%;
 }
 .ArrayLeft{
     width: 46%;
+    float:left;
 }
 .ArrayImage{
     float:right;
-    margin-top:-26rem;
     margin-right:3rem;
-    width: 290px;
+    width: 39.7%;
 }
 .ArrayImage .fileInfoTitle{
     margin-top: 4rem;
@@ -2026,8 +2049,7 @@
 }
 .Img_ArrayRight{
     float:right;
-    margin-top: -44rem;
-    margin-left: 24rem;
+    width:46.5%;
 }
 .Add_property_section .photoDate{
     background-color: #eaeaea;
@@ -2035,6 +2057,7 @@
 }
 .Add_property_section .photoPlace{
     background-color:#eaeaea;
+    margin-left: 6.3rem;
 }
 .pop_photoInfoTl{
     width:38px;
@@ -2119,11 +2142,35 @@
     float:left;
 }
 .AddingDiv .prop_reset{
-    margin-right: 5rem;
+    margin-right: 0.5rem;
     margin-top: 0.5rem;
 }
 .AddingDiv .prop_save{
     margin-top: 0.5rem;
+    margin-left: -5rem;
+}
+.AddingDiv .prop_delete, .TemplateProp .prop_delete{
+    width: 59px;
+    height: 25px;
+    background-color: transparent;
+    border-color: #4c7b69;
+    font-size: 13px;
+    float:left;
+    border: 1px solid #5d4a4a;
+    margin-top: 0.5rem;
+    margin-right: 4.8rem;
+}
+.TemplateProp .prop_delete{
+    margin-top: 0.2rem;
+    margin-right: 1.8rem;
+    margin-left: 0.5rem;
+}
+.TemplateProp .prop_reset{
+    margin-top:0.2rem;
+    margin-left: 4rem;
+}
+.TemplateProp .prop_save{
+    margin-left:-5rem;
 }
 .AddingDiv .prop_button{
     float:right;
@@ -2279,12 +2326,11 @@
     height: 17px;
     float: left;
     margin-top: -1rem;
-    margin-left: 26.8rem;
+    margin-left: 27.5rem;
 }
 .Apply{
     text-align: center;
-    margin-top:0.3rem;
-    margin-right:5rem;
+    margin-right:4rem;
     font-size: 12px;
     color:#a2a0a0;
 }
@@ -2557,3 +2603,92 @@
     margin-top: 5rem;
     margin-left: 7rem;
 }
+.custom-root {
+    background-color: #fff;
+  }
+  
+  .custom-divider {
+    background-color: #000;
+  }
+  
+  .custom-selected {
+    background-color: #f00;
+  }
+  .react-contextmenu {
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    color: #373a3c;
+    font-size: 16px;
+    margin: 2px 0 0;
+    min-width: 160px;
+    outline: none;
+    opacity: 0;
+    padding: 5px 0;
+    pointer-events: none;
+    text-align: left;
+    transition: opacity 250ms ease !important;
+  }
+  
+  .react-contextmenu.react-contextmenu--visible {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 9999;
+  }
+
+  .react-contextmenu-item {
+    background: 0 0;
+    border: 0;
+    color: #373a3c;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 3px 20px;
+    text-align: inherit;
+    white-space: nowrap;
+  }
+  
+  .react-contextmenu-item.react-contextmenu-item--active,
+  .react-contextmenu-item.react-contextmenu-item--selected {
+    color: #fff;
+    background-color: #20a0ff;
+    border-color: #20a0ff;
+    text-decoration: none;
+  }
+  
+  .react-contextmenu-item.react-contextmenu-item--disabled,
+  .react-contextmenu-item.react-contextmenu-item--disabled:hover {
+    background-color: transparent;
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #878a8c;
+  }
+  
+  .react-contextmenu-item--divider {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    cursor: inherit;
+    margin-bottom: 3px;
+    padding: 2px 0;
+  }
+  .react-contextmenu-item--divider:hover {
+    background-color: transparent;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+  
+  .react-contextmenu-item.react-contextmenu-submenu {
+    padding: 0;
+  }
+  
+  .react-contextmenu-item.react-contextmenu-submenu
+    > .react-contextmenu-item:after {
+    content: '▶';
+    display: inline-block;
+    position: absolute;
+    right: 7px;
+  }
+  
+  .example-multiple-targets::after {
+    content: attr(data-count);
+    display: block;
+  }
+  

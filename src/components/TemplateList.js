@@ -7,6 +7,8 @@ import Prop_tab from './Prop_tab.js';
 import Test_Template from './Test_Template.js';
 import TemplateProp from './TemplateProp.js';
 
+//Template Editor Main - left (Template List)
+//Template List 정보 조회 (DB로부터) 및 List 버튼화
 class TemplateList extends Component {
   state = {
     "DATA": [{
@@ -54,7 +56,7 @@ class TemplateList extends Component {
             "COUNT": 1
           }],
         },
-        "REGDATE": '20190110',
+        "REGDATE": '',
         "REGNAME": '조혜민',
         "MAPPING": {
           "FIELD": ""
@@ -106,7 +108,7 @@ class TemplateList extends Component {
             "COUNT": 1
           }],
         },
-        "REGDATE": '20190110',
+        "REGDATE": '',
         "REGNAME": '조혜민',
         "MAPPING": {
           "FIELD": ""
@@ -115,6 +117,10 @@ class TemplateList extends Component {
     }]
   }
 
+  //하나의 Template List 버튼 클릭했을 경우
+  //1. 클릭한 Template List css 변경 
+  //2. 클릭한 Template List의 정보를 조회하여 Main 오른쪽의 component 속성에 보여줌 (TemplateProp.js)
+  //3. Main 오른쪽의 component tab 선택 (Prop_tab.js)
   prop_template = (template, firstId, lastId) => {
 
     const temp = document.getElementById(template.ID);
@@ -141,10 +147,6 @@ class TemplateList extends Component {
 
     ReactDOM.render(<Prop_tab cate="template" />, document.getElementById('prop_edit'));
     ReactDOM.render(<TemplateProp info={template} />, document.getElementById('prop_view'));
-
-   // TemplateProp(template);
-   // const instance = new Test_Template(template);
-   // instance.render();
   };
 
   render() {

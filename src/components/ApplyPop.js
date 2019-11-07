@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 
+//Component Editor Dialog - 속성 고정
 class ApplyPop extends Component{
     state = {
         checkedCount: 0,
@@ -27,6 +28,7 @@ class ApplyPop extends Component{
         ]
     };
    
+    //check box 관리
     toggleChange = (e) => {
         let clickedId = e.target.id;
         
@@ -51,8 +53,23 @@ class ApplyPop extends Component{
         }
     };
 
-    render(){
+    //초기화
+    componentWillReceiveProps(nextProps) {
 
+        //if (nextProps.isReset === true && (nextProps.isCreate === 'copy' || nextProps.isCreate === 'create') ) {
+        if (nextProps.isReset === true) {
+            //저장된 json 파일 기반으로 수정해야함
+            for (let i = 0; i < this.state.options.length; i++) {
+                let id = this.state.options[i].id;
+                this.refs[id].checked = false;
+            }
+            this.setState({
+                checkedCount: 0
+            });
+        }
+    };
+
+    render(){
     return(
         <React.Fragment>
             <div className="applyCreateBox">
@@ -124,133 +141,4 @@ class ApplyPop extends Component{
     );
 }
 }
-
-/*const ApplyPop = () => {
-
-    const [check, setCheck] = useState({
-        allCheck: false,
-        applyIcon: false,
-        boxWidth: false,
-        boxHeight: false,
-        boxBorder: false,
-        boxPadding: false,
-        boxMargin: false,
-        backGround: false,
-        boxArray: false,
-        fontSize: false,
-        lineHeight: false,
-        weight: false,
-        family: false,
-        fontStyle: false,
-        fontColor: false,
-        applyUrl: false,
-        applyTarget: false,
-        mapping: false,
-
-    });
-
-    
-    const [checked, setChecked] = useState(false);
-
-    const toggleChange = (e) => {
-        if (e.target.className === 'allCheck') {
-            const nowChk = check.allCheck;
-            setCheck({
-                allCheck: !nowChk,
-                applyIcon: !nowChk,
-                boxWidth: !nowChk,
-                boxHeight: !nowChk,
-                boxBorder: !nowChk,
-                boxPadding: !nowChk,
-                boxMargin: !nowChk,
-                backGround: !nowChk,
-                boxArray: !nowChk,
-                fontSize: !nowChk,
-                lineHeight: !nowChk,
-                weight: !nowChk,
-                family: !nowChk,
-                fontStyle: !nowChk,
-                fontColor: !nowChk,
-                applyUrl: !nowChk,
-                applyTarget: !nowChk,
-                mapping: !nowChk,
-            });
-        }else{
-           const { target: {checked} } = e;
-           setChecked({checked});
-        }
-    };
-
-    return(
-        <React.Fragment>
-            <div className="applyCreateBox">
-                <input type="checkbox" id="allCheck" name="allCheck" onChange={toggleChange} checked={checked} />
-                <label for="allCheck"></label>
-                <div className="ApplyTitle">속성
-                <img className="applyBtn" src={apply} alt={"apply"} />
-                </div>
-                <div className="ApplyList" >
-                    <div className="applyIcon">Icon</div>
-                    <input type="checkbox" id="applyIcon" name="applyIcon" onChange={toggleChange} checked={checked}  />
-                    <label for="applyIcon"></label>
-                    <div className="applyBox">Box</div>
-                    <div className="apply_boxWidth">width</div>
-                    <input type="checkbox" id="boxWidth" name="boxWidth" onChange={toggleChange} checked={checked} />
-                    <label for="boxWidth"></label>
-                    <div className="apply_boxHeight">height</div>
-                    <input type="checkbox" id="boxHeight" name="boxHeight" onChange={toggleChange} checked={checked} />
-                    <label for="boxHeight"></label>
-                    <div className="apply_boxBorder">border</div>
-                    <input type="checkbox" id="boxBorder" name="boxBorder" onChange={toggleChange} checked={checked} />
-                    <label for="boxBorder"></label>
-                    <div className="apply_boxPadding">padding</div>
-                    <input type="checkbox" id="boxPadding" name="boxPadding" onChange={toggleChange} checked={checked} />
-                    <label for="boxPadding"></label>
-                    <div className="apply_boxMargin">margin</div>
-                    <input type="checkbox" id="boxMargin" name="boxMargin" onChange={toggleChange} checked={checked} />
-                    <label for="boxMargin"></label>
-                    <div className="apply_backGround">Back-ground</div>
-                    <input type="checkbox" id="backGround" name="backGround" onChange={toggleChange} checked={checked} />
-                    <label for="backGround"></label>
-                    <div className="apply_boxArray">정렬</div>
-                    <input type="checkbox" id="boxArray" name="boxArray" onChange={toggleChange} checked={checked} />
-                    <label for="boxArray"></label>
-
-                    <div className="applyFont">Font</div>
-                    <div className="apply_fontSize">size</div>
-                    <input type="checkbox" id="fontSize" name="fontSize" onChange={toggleChange} checked={checked} />
-                    <label for="fontSize"></label>
-                    <div className="apply_lineHeight">line height</div>
-                    <input type="checkbox" id="lineHeight" name="lineHeight" onChange={toggleChange} checked={checked}  />
-                    <label for="lineHeight"></label>
-                    <div className="apply_weight">weight</div>
-                    <input type="checkbox" id="weight" name="weight" onChange={toggleChange} checked={checked} />
-                    <label for="weight"></label>
-                    <div className="apply_family">family</div>
-                    <input type="checkbox" id="family" name="family" onChange={toggleChange} checked={checked} />
-                    <label for="family"></label>
-                    <div className="apply_fontStyle">style</div>
-                    <input type="checkbox" id="fontStyle" name="fontStyle" onChange={toggleChange} checked={checked}  />
-                    <label for="fontStyle"></label>
-                    <div className="apply_fontColor">color</div>
-                    <input type="checkbox" id="fontColor" name="fontColor" onChange={toggleChange} checked={checked} />
-                    <label for="fontColor"></label>
-
-                    <div className="applyLink">Link</div>
-                    <div className="apply_url">URL</div>
-                    <input type="checkbox" id="applyUrl" name="applyUrl" onChange={toggleChange} checked={checked} />
-                    <label for="applyUrl"></label>
-                    <div className="apply_target">Target</div>
-                    <input type="checkbox" id="applyTarget" name="applyTarget" onChange={toggleChange} checked={checked} />
-                    <label for="applyTarget"></label>
-
-                    <div className="applyMapping">매핑정보</div>
-                    <input type="checkbox" id="mapping" name="mapping" onChange={toggleChange} checked={checked} />
-                    <label for="mapping"></label>
-                </div>
-            </div>
-        </React.Fragment>
-    );
-};*/
-
 export default ApplyPop;

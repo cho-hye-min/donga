@@ -9,6 +9,8 @@ import ComponentList from './ComponentList.js';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+//Template Editor Main - left (Tab)
+//Template List & Component List Tab 구분 (TabPanel 적용 완료)
 class List_tab extends Component {
     state = {
         active_list: false
@@ -28,6 +30,7 @@ class List_tab extends Component {
         </Tab>
     );
 
+    //Tab 선택 시 css 변경
     handleList = (e) => {
         const className = e.target.className;
         switch (className) {

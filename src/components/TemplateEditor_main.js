@@ -12,7 +12,7 @@ import Prop_tab from './Prop_tab.js';
 import List_tab from './List_tab.js';
 import { AST_False } from 'terser';
 
-
+//Template Editor main
 class TemplateEditor_main extends Component{
     state = {
         isOpen: false
@@ -71,52 +71,3 @@ class TemplateEditor_main extends Component{
 }
 export default TemplateEditor_main;
 
-
- /*handleList = (e) =>{
-            const className = e.target.className;
-            switch(className){
-                case "template_tab":
-                case "temp_tab":
-                    if (className === 'temp_tab') {
-                        ReactDOM.render(<TemplateList />, document.getElementById('list_view'));
-                        const currentState = this.state.active_list;
-                        this.setState({ active_list: !currentState });
-                    }
-                    break;
-                case "component_tab":
-                case "com_tab":
-                    if (className === 'component_tab') {
-                        ReactDOM.render(<ComponentList />, document.getElementById('list_view'));
-                        const currentState2 = this.state.active_list;
-                        this.setState({ active_list: !currentState2 });
-                    }
-                    break;
-                default:
-                    ReactDOM.render(<TemplateList />, document.getElementById('list_view'));
-                    break;
-            }
-    }*/
-
-   /* handleProp = (e) =>{
-        const className = e.target.className;
-        switch(className){
-            case "template_prop":
-            case "temp_prop":
-                if (className === 'temp_prop') {
-                    //ReactDOM.render(<TemplateProp />, document.getElementById('prop_view'));
-                    const currentState = this.state.active_prop;
-                    this.setState({ active_prop: !currentState });
-                }
-                break;
-            case "component_prop":
-            case "com_prop":
-                if(className === 'component_prop'){
-                    //ReactDOM.render(<ComponentProp />, document.getElementById('prop_view'));
-                    const currentState2 = this.state.active_prop;
-                    this.setState({ active_prop: !currentState2 });
-                }
-                break;
-            default:
-                break;
-        }
-    }*/

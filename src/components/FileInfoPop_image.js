@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import './TemplateEditor.css';
 
+//component image 속성 중, file 정보
 const FileInfoPop_image = (file) => {
 
   const [valEdit, setValue] = useState({
@@ -24,6 +25,33 @@ const FileInfoPop_image = (file) => {
     };
     setValue(newVal);
   };
+
+  //초기화
+  useEffect(()=>{
+    //component 생성일 경우, 모든 값 빈 값으로 초기화
+    if(file.isReset === true && (file.isCreate === 'copy' ||  file.isCreate === 'create')){
+      setValue({
+        pop_file_name_input: '',
+        pop_file_path_input: '',
+        pop_file_format_input: '',
+        pop_file_caption_input: '',
+        pop_file_size_input: '',
+        pop_file_resolution_input: '',
+        pop_file_description_tx: ''
+      });
+    //component 편집일 경우, 기존 값으로 초기화
+    }else if(file.isReset === true ){
+      setValue({
+        pop_file_name_input: file.fileInfo.FILENAME,
+        pop_file_path_input: file.fileInfo.FILEPATH,
+        pop_file_format_input: file.fileInfo.FILEFORMAT,
+        pop_file_caption_input: file.fileInfo.CAPTION,
+        pop_file_size_input: file.fileInfo.FILESIZE,
+        pop_file_resolution_input: file.fileInfo.RESOLUTION,
+        pop_file_description_tx: file.fileInfo.DESCRIPTION
+      });
+    }
+  });
 
   useEffect(() => {
     setValue({

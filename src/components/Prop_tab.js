@@ -10,6 +10,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import TemplateProp from './TemplateProp.js';
 
+//Template Editor Main - right (Template & Component 속성 Tab)
 class Prop_tab extends Component {
     state={
             active_prop: false
@@ -29,19 +30,6 @@ class Prop_tab extends Component {
         </Tab>
     );
 
-    /*CustomTempTabPanel = ({children}) => (
-        <TabPanel id="prop_temp"  forceRender={true} >
-            {children}
-        </TabPanel>
-    );
-
-    CustomcompoTabPanel = ({children}) => (
-        <TabPanel id="prop_comp"  forceRender={true} >
-            {children}
-        </TabPanel>
-    );*/
-
-
     componentWillMount (){
         if (this.props.cate === 'component') {
             this.setState({ active_prop: true });
@@ -58,8 +46,8 @@ class Prop_tab extends Component {
         }
     }
 
+    //Tab 선택 시 css 변경
     handleProp = (e) => {
-
         const className = e.target.className;
 
         switch (className) {
@@ -86,9 +74,6 @@ class Prop_tab extends Component {
         this.CustomTempTab.tabsRole = 'Tab';
         this.CustomCompoTab.tabsRole = 'Tab';
 
-       // this.CustomTempTabPanel.tabsRole = 'TabPanel';
-       // this.CustomcompoTabPanel.tabsRole = 'TabPanel';
-
         const tabListStyle = {
             borderBottom: 0,
             marginBottom: "0px"
@@ -113,10 +98,3 @@ class Prop_tab extends Component {
 }
 
 export default Prop_tab;
-
-/*
- <div className={this.state.active_prop ? 'temp_prop' : 'template_prop'}
-                    onClick={this.handleProp}>Template 속성</div>
-                <div className={this.state.active_prop ? 'com_prop' : 'component_prop'}
-                    onClick={this.handleProp}>Component 속성</div>
-*/

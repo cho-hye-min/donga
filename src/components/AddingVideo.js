@@ -13,22 +13,22 @@ import ApplyPop from './ApplyPop.js';
 import ColorPop from './ColorPop.js';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import FileInfoPop_image from './FileInfoPop_image.js';
+import FileInfoPop_video from './FileInfoPop_video.js';
 
 //Component Editor dialog
-//Component Image 속성 view
-const AddingImg = (info) => {
+//Component Video 속성 view
+const AddingVideo = (info) => {
+
     const compoName = info.addInfo.name;
     const compoType = info.addInfo.type;
     const compoCate = info.addInfo.cate;
-    console.log(info.data.ID);
     const compoId = info.data.ID;
     const attribute = info.data.ATTRIBUTE;
 
     const [isCreate, setCreate] = useState(info.isCreate);
     const [isReset, setReset] = useState(false);
     const [startDate, setStartDate] = useState(attribute.PHOTOINFO.PHOTODATE);
-    const [isMark, setMark] = useState(attribute.WATERMARK);
+    const [isAutoPlay, setAutoPlay] = useState(attribute.AUTOPLAY);
 
     const [isIcon, setIcon] = useState({
         iconFront: false,
@@ -65,8 +65,7 @@ const AddingImg = (info) => {
         font_style: attribute.FONT.FONTSTYLE
     });
 
-
-    const { Name, prop_width, prop_height, size_input, line_height_input, url_input, field_input, photoPlace, font_weight, font_family, font_style } = valEdit;
+    const { Name, prop_width, prop_height, size_input, line_height_input, url_input, field_input, photoPlace, font_weight, font_family, font_style  } = valEdit;
     const { borderPop, paddingPop, marginPop, fileInfoPop, applyPop, colorPop } = showPop;
     const { iconFront, iconBack } = isIcon;
     const { targetNew, targetNow } = isTarget;
@@ -78,6 +77,17 @@ const AddingImg = (info) => {
             [e.target.className]: e.target.value
         };
 
+        setValue(newVal);
+    };
+
+    //select option 관리
+    const handleChange = (e) => {
+
+        const newVal = {
+          ...valEdit,
+          [e.target.id]: e.target.value
+        };
+    
         setValue(newVal);
     };
 
@@ -120,14 +130,14 @@ const AddingImg = (info) => {
                 setTarget(nextChk);
                 break;
             case 'iconUse':
-                setIconUse({ isIconUse: !isIconUse });
+                setIconUse(!isIconUse);
                 break;
-            case 'mark':
-                setMark(!isMark);
+            case 'autoplay':
+                setAutoPlay(!isAutoPlay);
                 break;
             default: break;
         }
-    }
+    };
 
     //pop show/hide 관리
     const handleOnClick = data => {
@@ -186,9 +196,10 @@ const AddingImg = (info) => {
     const styleApplyPop = applyPop ? {} : { display: 'none' };
     const styleColorPop = colorPop ? {} : { display: 'none' };
 
+
     //초기화
     const handleReset = () => {
-        //생성일 경우 모든 값 0으로 초기화
+        //component 생성일 경우, 모든 값 0으로 초기화
         if (isCreate === 'copy' || isCreate === 'create') {
             setValue({
                 Name: '',
@@ -210,17 +221,17 @@ const AddingImg = (info) => {
                 iconBack: false
             };
             setIcon(nextChk);
-
+    
             nextChk = {
                 targetNew: true,
                 targetNow: false
             };
             setTarget(nextChk);
 
-            setMark(false);
+            setAutoPlay(false);
             setStartDate(0);
 
-        //편집일 경우 원래 값으로 초기화
+        //component 편집일 경우, 기존 값으로 초기화
         } else {
             setValue({
                 Name: compoName,
@@ -274,8 +285,7 @@ const AddingImg = (info) => {
                     break;
                 default: break;
             }
-
-            setMark(attribute.WATERMARK);
+            setAutoPlay(attribute.AUTOPLAY);
             setStartDate(attribute.PHOTOINFO.PHOTODATE);
         }
 
@@ -291,17 +301,6 @@ const AddingImg = (info) => {
         //추후 attribute에 field와 data 추가해야함!
         setIconUse(false);
         setReset(true);
-
-    };
-
-    //select option 관리
-    const handleChange = (e) => {
-        const newVal = {
-            ...valEdit,
-            [e.target.id]: e.target.value
-        };
-
-        setValue(newVal);
     };
 
     useEffect(() => {
@@ -328,7 +327,7 @@ const AddingImg = (info) => {
             colorPop: false
         });
 
-        setMark(attribute.WATERMARK);
+        setAutoPlay(attribute.AUTOPLAY);
 
         let nextChk = {};
         let location = attribute.ICON.LOCATION;
@@ -369,6 +368,7 @@ const AddingImg = (info) => {
                 break;
             default: break;
         }
+
         setStartDate(attribute.PHOTOINFO.PHOTODATE);
 
         //추후 attribute에 field와 data 추가해야함!
@@ -378,7 +378,7 @@ const AddingImg = (info) => {
 
     useEffect(() => {
         setReset(false);
-    });
+      });
 
     return (
         <div className="AddingDiv">
@@ -393,27 +393,27 @@ const AddingImg = (info) => {
                 <div className="ArrayLeft">
                     <div className="NameTitle">Component Name</div>
                     <div className="fullName">{compoType}-{compoCate}({compoId})</div>
-                    <input className="Name" name="Name" value={Name} onChange={handleVal} isReset={isReset} />
+                    <input className="Name" name="Name" value={Name} onChange={handleVal} />
                     <div className="default">Component 속성 고정</div> <img className="default_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('applyPop')} />
-                    <div className="ApplyPop" style={styleApplyPop}>
-                        <ApplyPop isReset={isReset} isCreate={isCreate} />
+                    <div className="ApplyPop" style={styleApplyPop} >
+                        <ApplyPop isReset={isReset} isCreate={isCreate}/>
                     </div>
                     <div className="boxTitle">Box</div>
                     <div className="prop_width_tx">width</div> <input className="prop_width" value={prop_width} onChange={handleVal} /><div className="prop_width_px">px</div>
                     <div className="prop_height_tx">height</div> <input className="prop_height" value={prop_height} onChange={handleVal} /><div className="prop_height_px">px</div>
                     <div className="borderTitle">border</div> <img className="border_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('borderPop')} />
                     <div id="border_section" style={styleBorderPop}>
-                        <BorderPop borderInfo={attribute.BOX.BORDER} title={compoCate} isReset={isReset} isCreate={isCreate} />
+                        <BorderPop borderInfo={attribute.BOX.BORDER} title={compoCate} isReset={isReset} isCreate={isCreate}/>
                     </div>
                     <div className="paddingTitle">padding</div> <img className="padding_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('paddingPop')} />
                     <div id="padding_section" style={stylePaddingPop}>
-                        <PaddingPop paddingInfo={attribute.BOX.PADDING} title={compoCate} isReset={isReset} isCreate={isCreate} />
+                        <PaddingPop paddingInfo={attribute.BOX.PADDING} title={compoCate} isReset={isReset} isCreate={isCreate}/>
                     </div>
                     <div className="marginTitle">margin</div> <img className="margin_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('marginPop')} />
                     <div id="margin_section" style={styleMarginPop}>
-                        <MarginPop marginInfo={attribute.BOX.MARGIN} title={compoCate} isReset={isReset} isCreate={isCreate} />
+                        <MarginPop marginInfo={attribute.BOX.MARGIN} title={compoCate} isReset={isReset} isCreate={isCreate}/>
                     </div>
-                    <div className="backgroundTitle">background-color</div> <img className="color_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('colorPop')} />
+                    <div className="backgroundTitle">background-color</div>  <img className="color_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('colorPop')} />
                     <div id="background_section" style={styleColorPop}>
                         <ColorPop />
                     </div>
@@ -476,9 +476,9 @@ const AddingImg = (info) => {
                     <input className="photoPlace" value={photoPlace} onChange={handleVal} />
                     <div className="fileInfoTitle">파일정보</div> <img id="img_down_file" src={downArrow} alt={"down"} onClick={() => handleOnClick('fileInfoPop')} />
                     <div id="fileInfo_section" style={styleFileInfoPop}>
-                        <FileInfoPop_image fileInfo={attribute.FILEINFO} title={Name} isReset={isReset} isCreate={isCreate} />
+                        <FileInfoPop_video fileInfo={attribute.FILEINFO} title={Name} isReset={isReset} isCreate={isCreate}/>
                     </div>
-                    <div className="markTitle">워터마크</div> <input type="checkbox" id="mark" name="mark" value="mark" checked={isMark} onChange={toggleChange}></input>
+                    <div className="autoPlayTitle">자동재생</div> <input type="checkbox" id="autoplay" name="autoplay" value="autoplay" checked={isAutoPlay} onChange={toggleChange}></input>
                 </div>
             </div>
             <div className="prop_button">
@@ -490,4 +490,4 @@ const AddingImg = (info) => {
     );
 };
 
-export default AddingImg; 
+export default AddingVideo; 

@@ -14,27 +14,24 @@ import MarginPop from './MarginPop.js';
 import ColorPop from './ColorPop.js';
 import FileInfoPop_image from './FileInfoPop_image.js';
 
+//Template Editor Main - right (Component Image 타입의 속성 view)
 const Prop_image = (component) => {
-  const [startDate, setStartDate] = useState(new Date());
 
   const id = component.info.ID;
   const attr = component.info.ATTRIBUTE;
+  
+  const [isReset, setReset] = useState(false);
+  const [startDate, setStartDate] = useState(attr.PHOTOINFO.PHOTODATE);
+  const [isMark, setMark] = useState(attr.WATERMARK);
 
   const [isIcon, setIcon] = useState({
     iconFront: false,
     iconBack: false
-});
+  });
 
-const [isTarget, setTarget] = useState({
+  const [isTarget, setTarget] = useState({
     targetNew: false,
     targetNow: false
-});
-
-  const [isChecked, setChecked] = useState({
-    iconFront: true,
-    iconBack: false,
-    targetNew: true,
-    targetNow:false
   });
 
   const [showPop, setShowPop] = useState({
@@ -53,14 +50,18 @@ const [isTarget, setTarget] = useState({
     line_height_input: attr.FONT.LINEHEIGHT,
     url_input: attr.LINK.URL,
     field_input: attr.MAPPING.FIELD,
-    photoPlace: attr.PHOTOINFO.PHOTOPLACE
+    photoPlace: attr.PHOTOINFO.PHOTOPLACE,
+    font_weight: attr.FONT.FONTWEIGHT,
+    font_family: attr.FONT.FONTFAMILY,
+    font_style: attr.FONT.FONTSTYLE
   });
 
-  const { propName, prop_width, prop_height, size_input, line_height_input, url_input, field_input, photoPlace } = valEdit;
+  const { propName, prop_width, prop_height, size_input, line_height_input, url_input, field_input, photoPlace, font_weight, font_family, font_style } = valEdit;
   const { borderPop, paddingPop, marginPop, fileInfoPop, colorPop } = showPop;
   const { iconFront, iconBack } = isIcon;
   const { targetNew, targetNow } = isTarget;
 
+  //input text 관리
   const handleVal = (e) => {
 
     const newVal = {
@@ -72,13 +73,14 @@ const [isTarget, setTarget] = useState({
 
   };
 
+  //check box 관리
   const toggleChange = (e) => {
     const id = e.target.id;
-    let nextChk ={};
-    
+    let nextChk = {};
+
     switch (id) {
       case 'iconFront':
-          nextChk = {
+        nextChk = {
           ...isIcon,
           iconFront: !iconFront,
           iconBack: !iconBack
@@ -86,7 +88,7 @@ const [isTarget, setTarget] = useState({
         setIcon(nextChk);
         break;
       case 'iconBack':
-          nextChk = {
+        nextChk = {
           ...isIcon,
           iconBack: !iconBack,
           iconFront: !iconFront
@@ -94,7 +96,7 @@ const [isTarget, setTarget] = useState({
         setIcon(nextChk);
         break;
       case 'targetNew':
-          nextChk = {
+        nextChk = {
           ...isTarget,
           targetNew: !targetNew,
           targetNow: !targetNow
@@ -102,17 +104,31 @@ const [isTarget, setTarget] = useState({
         setTarget(nextChk);
         break;
       case 'targetNow':
-          nextChk = {
+        nextChk = {
           ...isTarget,
           targetNow: !targetNow,
           targetNew: !targetNew
         };
         setTarget(nextChk);
         break;
+      case 'mark':
+        setMark(!isMark);
+        break;
       default: break;
     }
   };
 
+  //select option 관리
+  const handleChange = (e) => {
+
+    const newVal = {
+      ...valEdit,
+      [e.target.id]: e.target.value
+    };
+
+    setValue(newVal);
+  };
+  //border, padding, margin, color pop -> show / hide 관리
   const handleOnClick = data => {
     let nextPop = {};
     switch (data) {
@@ -161,7 +177,8 @@ const [isTarget, setTarget] = useState({
   const styleFileInfoPop = fileInfoPop ? {} : { display: 'none' };
   const styleColorPop = colorPop ? {} : { display: 'none' };
 
-  useEffect(() => {
+  //초기화
+  const handleReset = () => {
     setValue({
       propName: component.info.TITLE,
       prop_width: attr.BOX.WIDTH,
@@ -170,7 +187,10 @@ const [isTarget, setTarget] = useState({
       line_height_input: attr.FONT.LINEHEIGHT,
       url_input: attr.LINK.URL,
       field_input: attr.MAPPING.FIELD,
-      photoPlace: attr.PHOTOINFO.PHOTOPLACE
+      photoPlace: attr.PHOTOINFO.PHOTOPLACE,
+      font_weight: attr.FONT.FONTWEIGHT,
+      font_family: attr.FONT.FONTFAMILY,
+      font_style: attr.FONT.FONTSTYLE
     });
 
     setShowPop({
@@ -181,7 +201,9 @@ const [isTarget, setTarget] = useState({
       colorPop: false
     });
 
-    let nextChk ={};
+    setMark(attr.WATERMARK);
+
+    let nextChk = {};
     let location = attr.ICON.LOCATION;
     switch (location) {
       case 'front':
@@ -206,22 +228,98 @@ const [isTarget, setTarget] = useState({
     switch (target) {
       case '_blank':
         nextChk = {
-          targetNew : true,
-          targetNow : false
+          targetNew: true,
+          targetNow: false
         };
         setTarget(nextChk);
         break;
       case '_now':
         nextChk = {
           targetNow: true,
-          targetNew : false
+          targetNew: false
         };
         setTarget(nextChk);
         break;
       default: break;
     }
 
+    setStartDate(attr.PHOTOINFO.PHOTODATE);
+    setReset(true);
+
+  };
+
+  useEffect(() => {
+    setValue({
+      propName: component.info.TITLE,
+      prop_width: attr.BOX.WIDTH,
+      prop_height: attr.BOX.HEIGHT,
+      size_input: attr.FONT.FONTSIZE,
+      line_height_input: attr.FONT.LINEHEIGHT,
+      url_input: attr.LINK.URL,
+      field_input: attr.MAPPING.FIELD,
+      photoPlace: attr.PHOTOINFO.PHOTOPLACE,
+      font_weight: attr.FONT.FONTWEIGHT,
+      font_family: attr.FONT.FONTFAMILY,
+      font_style: attr.FONT.FONTSTYLE
+    });
+
+    setShowPop({
+      borderPop: false,
+      paddingPop: false,
+      marginPop: false,
+      fileInfoPop: false,
+      colorPop: false
+    });
+
+    setMark(attr.WATERMARK);
+
+    let nextChk = {};
+    let location = attr.ICON.LOCATION;
+    switch (location) {
+      case 'front':
+        nextChk = {
+          iconFront: true,
+          iconBack: false
+        };
+        setIcon(nextChk);
+        break;
+      case 'back':
+        nextChk = {
+          iconBack: true,
+          iconFront: false
+        };
+        setIcon(nextChk);
+        break;
+      default: break;
+    }
+
+
+    let target = attr.LINK.TARGET;
+    switch (target) {
+      case '_blank':
+        nextChk = {
+          targetNew: true,
+          targetNow: false
+        };
+        setTarget(nextChk);
+        break;
+      case '_now':
+        nextChk = {
+          targetNow: true,
+          targetNew: false
+        };
+        setTarget(nextChk);
+        break;
+      default: break;
+    }
+
+    setStartDate(attr.PHOTOINFO.PHOTODATE);
+
   }, [id]);
+
+  useEffect(() => {
+    setReset(false);
+  });
 
   return (
     <main>
@@ -232,27 +330,27 @@ const [isTarget, setTarget] = useState({
         <div className="prop_height_tx">height</div> <input className="prop_height" value={prop_height} onChange={handleVal} /><div className="prop_height_px">px</div>
         <div className="borderTitle">border</div> <img className="border_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('borderPop')} />
         <div id="border_section" style={styleBorderPop}>
-          <BorderPop borderInfo={attr.BOX.BORDER} title={propName} />
+          <BorderPop borderInfo={attr.BOX.BORDER} title={propName} isReset={isReset} />
         </div>
         <div className="paddingTitle">padding</div> <img className="padding_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('paddingPop')} />
         <div id="padding_section" style={stylePaddingPop}>
-          <PaddingPop paddingInfo={attr.BOX.PADDING} title={propName} />
+          <PaddingPop paddingInfo={attr.BOX.PADDING} title={propName} isReset={isReset} />
         </div>
         <div className="marginTitle">margin</div> <img className="margin_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('marginPop')} />
-        <div id="margin_section"style={styleMarginPop}>
-          <MarginPop marginInfo={attr.BOX.MARGIN} title={propName}/>
+        <div id="margin_section" style={styleMarginPop}>
+          <MarginPop marginInfo={attr.BOX.MARGIN} title={propName} isReset={isReset} />
         </div>
         <div className="backgroundTitle">background-color</div> <img className="color_pop" src={downArrow} alt={"down"} onClick={() => handleOnClick('colorPop')} />
         <div id="background_section" style={styleColorPop}>
-          <ColorPop/>
+          <ColorPop />
         </div>
         <div className="arrayBox">
-        <div className="arrayTitle">정렬</div>
-        <img id="img_left_array" src={leftArray} alt={"leftArray"} />
-        <img id="img_center_array" src={centerArray} alt={"centerArray"} />
-        <img id="img_right_array" src={rightArray} alt={"rightArray"} />
-        <img id="img_justify_array" src={justifyArray} alt={"justifyArray"} />
-        <div className="arraySection"></div>
+          <div className="arrayTitle">정렬</div>
+          <img id="img_left_array" src={leftArray} alt={"leftArray"} />
+          <img id="img_center_array" src={centerArray} alt={"centerArray"} />
+          <img id="img_right_array" src={rightArray} alt={"rightArray"} />
+          <img id="img_justify_array" src={justifyArray} alt={"justifyArray"} />
+          <div className="arraySection"></div>
         </div>
         <div className="iconTitle">Icon</div>
         <select className="iconSection" defaultValue={attr.ICON.TYPE}>
@@ -267,19 +365,19 @@ const [isTarget, setTarget] = useState({
         <div className="fontTitle">Font</div>
         <div className="size">size</div><input className="size_input" value={size_input} onChange={handleVal} /><div className="size_px">px</div>
         <div className="line_height">line height</div><input className="line_height_input" value={line_height_input} onChange={handleVal} /><div className="line_height_px">px</div>
-        <div className="weight">weight</div><select className="weightSection" defaultValue={attr.FONT.FONTWEIGHT}>
+        <div className="weight">weight</div><select id="font_weight" className="weightSection" value={font_weight} onChange={handleChange}>
           <option value="normal">normal</option>
           <option value="lighter">lighter</option>
           <option value="bold">bold</option>
         </select>
-        <div className="family">family</div>  <select className="familySection" defaultValue={attr.FONT.FONTFAMILY}>
+        <div className="family">family</div>  <select id="font_family" className="familySection" value={font_family} onChange={handleChange}>
           <option value="돋음">돋음</option>
           <option value="궁서">궁서</option>
           <option value="굴림">굴림</option>
           <option value="맑음고딕">맑음고딕</option>
         </select>
         <div className="style">style</div>
-        <select className="styleSection" defaultValue={attr.FONT.FONTSTYLE}>
+        <select className="styleSection" id="font_style" value={font_style} onChange={handleChange}>
           <option value="normal">normal</option>
           <option value="italic">italic</option>
           <option value="oblique">oblique</option></select>
@@ -297,14 +395,14 @@ const [isTarget, setTarget] = useState({
         <DatePicker className="photoDate" dateFormat="yyyy/MM/dd" selected={startDate} onChange={date => setStartDate(date)} />
         <div className="photoPlace_tx">촬영장소</div>
         <input className="photoPlace" value={photoPlace} onChange={handleVal} />
-        <div className="fileInfoTitle">파일정보</div> <img id="img_down_file" src={downArrow} alt={"down"} onClick={() => handleOnClick('fileInfoPop')}  />
-        <div id="fileInfo_section"style={styleFileInfoPop}>
-          <FileInfoPop_image fileInfo={attr.FILEINFO} title={propName}/>
+        <div className="fileInfoTitle">파일정보</div> <img id="img_down_file" src={downArrow} alt={"down"} onClick={() => handleOnClick('fileInfoPop')} />
+        <div id="fileInfo_section" style={styleFileInfoPop}>
+          <FileInfoPop_image fileInfo={attr.FILEINFO} title={propName} isReset={isReset} />
         </div>
-        <div className="markTitle">워터마크</div> <input type="checkbox" id="mark" name="mark" value="mark"></input>
+        <div className="markTitle">워터마크</div> <input type="checkbox" id="mark" name="mark" value="mark" checked={isMark} onChange={toggleChange}></input>
       </div>
       <div className="prop_button">
-        <button className="prop_reset" >초기화</button>
+        <button className="prop_reset" onClick={handleReset}>초기화</button>
         <button className="prop_save" >저장</button>
       </div>
     </main>

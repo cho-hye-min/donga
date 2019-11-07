@@ -1,6 +1,7 @@
 import React , {useState , useEffect} from 'react';
 import './TemplateEditor.css';
 
+//component video 속성 중, file 정보
 const FileInfoPop_video = (file) => {
 
   const [valEdit, setValue] = useState({
@@ -26,6 +27,35 @@ const FileInfoPop_video = (file) => {
       };
       setValue(newVal);
 };
+
+  //초기화
+  useEffect(() => {
+    //component 생성일 경우, 모든 값 빈 값으로 초기화
+    if (file.isReset === true && (file.isCreate === 'copy' || file.isCreate === 'create')){
+      setValue({
+        pop_file_video_name_input: '',
+        pop_file_video_path_input: '',
+        pop_file_video_format_input: '',
+        pop_file_video_size_input: '',
+        pop_file_video_resolution_input: '',
+        pop_file_video_playtime_input: '',
+        pop_file_video_headImage_input: '',
+        pop_file_video_description_tx: ''
+      });
+    //component 편집일 경우, 기존 값으로 초기화
+    }else if (file.isReset === true) {
+      setValue({
+        pop_file_video_name_input: file.fileInfo.FILENAME,
+        pop_file_video_path_input: file.fileInfo.FILEPATH,
+        pop_file_video_format_input: file.fileInfo.FILEFORMAT,
+        pop_file_video_size_input: file.fileInfo.FILESIZE,
+        pop_file_video_resolution_input: file.fileInfo.RESOLUTION,
+        pop_file_video_playtime_input: file.fileInfo.PLAYTIME,
+        pop_file_video_headImage_input: file.fileInfo.HEADIMAGE,
+        pop_file_video_description_tx: file.fileInfo.DESCRIPTION
+      });
+    }
+  }); 
 
 useEffect(() => {
   setValue({

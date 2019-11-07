@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './TemplateEditor.css';
 import ComponentAdd from './ComponentAdd.js';
 
+//component 추가 버튼 클릭 ->
+//추가할 component이름/종류/유형 선택 pop up
 class ComponentAddPop extends Component {
     state = {
         comName:'',
@@ -32,6 +34,7 @@ class ComponentAddPop extends Component {
         ]
     };
 
+    //종류 선택에 따른 유형 리스트업
     handleChange = (e) => {
         if(e.target.value === 'image'){
             this.setState({isText:false});
@@ -48,12 +51,15 @@ class ComponentAddPop extends Component {
         }
     };
 
+    //input text 관리
     handleInputChange = (e) => {
         this.setState({
             comName: e.target.value
         });
-    }
+    } 
 
+    //(이름/종류/유형) 선택 후 확인버튼 클릭했을 경우
+    //Component Editor dialog로 이동
     handleComponentAdd = (e) => {
         if(this.state.comName === '' ){
             alert('컴포넌트 이름을 입력해주세요.');
@@ -65,18 +71,33 @@ class ComponentAddPop extends Component {
             const compoCate = window.document.getElementsByClassName('componentAdd_cate')[0].value;
             
             const addInfo = {};
-            addInfo.compoName = compoName;
-            addInfo.compoType = compoType;
-            addInfo.compoCate = compoCate;
+            addInfo.name = compoName;
+            addInfo.type = compoType;
+            addInfo.cate = compoCate;
+            const isCreate = this.props.isCreate;
 
-            ReactDOM.render(<ComponentAdd call={this.handleComponentAdd} addInfo={addInfo}/>, document.getElementById('compoAddPage'));
+            ReactDOM.render(<ComponentAdd call={this.handleComponentAdd} addInfo={addInfo} isCreate={isCreate}/>, document.getElementById('compoAddPage'));
         } else if (e.target.className === 'componentAdd_cancle') {
             ReactDOM.unmountComponentAtNode(document.getElementById('compoAddPage'));
         }
     };
 
-    render() {
+    //Template Editor Main - Component List에서 우클릭을 통해 편집/복제 선택했을 경우
+    //이름/종류/유형 선택 pop up을 스킵하고 ----> ComponentAdd(Component Editor Dialog)로 바로 이동
+    componentWillMount () {
+        if(this.props.isCreate === 'edit' || this.props.isCreate === 'copy'){
+            const info = this.props.info;
+            this.setState({comName:info.name});
+            /*const addInfo = {};
+            addInfo.compoName = info.name;
+            addInfo.compoType = info.type;
+            addInfo.compoCate = info.cate;*/
+            const isCreate = this.props.isCreate;
+            ReactDOM.render(<ComponentAdd call={this.handleComponentAdd} addInfo={info} isCreate={isCreate}/>, document.getElementById('compoAddPage'));
+        } 
+    };
 
+    render() {
         let typeInfo = [];
         let typeList = '';
 
